@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pressure Injury Staging Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #1e293b;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-weight: 700;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+        
+        .header p {
+            font-weight: 300;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .content {
+            padding: 30px 40px;
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .step-indicator::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #e2e8f0;
+            z-index: 1;
+        }
+        
+        .step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-weight: 600;
+            color: #64748b;
+            transition: var(--transition);
+        }
+        
+        .step.active .step-number {
+            background-color: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .step-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #64748b;
+        }
+        
+        .step.active .step-label {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .question {
+            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+        }
+        
+        .question.active {
+            background-color: #fff;
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.1);
+        }
+        
+        .question h3 {
+            margin-bottom: 20px;
+            color: var(--secondary);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .options {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .option {
+            padding: 18px 22px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            background-color: white;
+        }
+        
+        .option:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .option input {
+            margin-right: 15px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .option label {
+            cursor: pointer;
+            flex: 1;
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+        
+        .option input:checked + label {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .result-container {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            margin: 30px 0;
+            border: 1px solid #bbf7d0;
+            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.1);
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .result-title {
+            color: var(--success);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        #resultText {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #166534;
+            font-weight: 500;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-decoration: none;
+            font-size: 1rem;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .question-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+        }
+        
+        .btn-prev {
+            background-color: #e2e8f0;
+            color: #334155;
+        }
+        
+        .btn-prev:hover {
+            background-color: #cbd5e1;
+        }
+        
+        .btn-next {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-next:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .progress-container {
+            margin: 20px 0;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .highlight {
+            background-color: #fef3c7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .comparison-container {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f1f5f9;
+            border-radius: var(--border-radius);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .comparison-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .comparison-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .comparison-item:last-child {
+            border-bottom: none;
+        }
+        
+        .comparison-label {
+            font-weight: 500;
+            color: #334155;
+        }
+        
+        .comparison-value {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .initial-value {
+            color: #ef4444;
+        }
+        
+        .final-value {
+            color: #10b981;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .header {
+                padding: 25px 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .question {
+                padding: 20px;
+            }
+            
+            .options {
+                gap: 12px;
+            }
+            
+            .option {
+                padding: 16px;
+            }
+            
+            .result-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Pressure Injury Staging Tool</h1>
+            <p>Professional clinical decision support for accurate pressure injury staging</p>
+        </div>
+        
+        <div class="content">
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress" id="progress" style="width: 0%"></div>
+                </div>
+            </div>
+            
+            <form id="woundForm">
+                <div class="step-indicator">
+                    <div class="step active" id="step1">
+                        <div class="step-number">0</div>
+                        <div class="step-label">Initial Assessment</div>
+                    </div>
+                    <div class="step" id="step2">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Skin Condition</div>
+                    </div>
+                    <div class="step" id="step3">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Location</div>
+                    </div>
+                    <div class="step" id="step4">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Wound Characteristics</div>
+                    </div>
+                    <div class="step" id="step5">
+                        <div class="step-number">4</div>
+                        <div class="step-label">Staging</div>
+                    </div>
+                </div>
+                
+                <div class="question active" id="question1a">
+                    <h3>0. What type of pressure injury do you think your wound is?</h3>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q0" value="PI Stage 1" id="q0-1">
+                            <label for="q0-1">PI Stage 1</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q0" value="PI Stage 2" id="q0-2">
+                            <label for="q0-2">PI Stage 2</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q0" value="PI Stage 3" id="q0-3">
+                            <label for="q0-3">PI Stage 3</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q0" value="PI Stage 4" id="q0-4">
+                            <label for="q0-4">PI Stage 4</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q0" value="Unstageable" id="q0-5">
+                            <label for="q0-5">Unstageable</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q0" value="DTI Deep tissue injury" id="q0-6">
+                            <label for="q0-6">DTI Deep tissue injury</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q0" value="IAD" id="q0-7">
+                            <label for="q0-7">IAD Incontinence-Associated Dermatitis</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q0" value="Moisture-Associated Skin Damage (MASD)" id="q0-8">
+                            <label for="q0-8">Moisture-Associated Skin Damage (MASD)</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q0" value="Not PI" id="q0-9">
+                            <label for="q0-9">Not PI</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q0" value="Medical related PI" id="q0-10">
+                            <label for="q0-10">Medical related PI</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q0" value="mucosal membrane PI" id="q0-11">
+                            <label for="q0-11">Mucosal membrane PI</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q0" value="I have no idea" id="q0-12">
+                            <label for="q0-12">I have no idea</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="question1" style="display: none;">
+                    <h3>1. Is the skin/ mucosal membrane normal?</h3>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q1" value="yes" id="q1-1">
+                            <label for="q1-1">Yes</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q1" value="no, mucosal membrane abnormal" id="q1-2">
+                            <label for="q1-2">No, mucosal membrane abnormal</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q1" value="no, skin abnormal" id="q1-3">
+                            <label for="q1-3">No, skin abnormal</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="question2" style="display: none;">
+                    <h3>2. Is the wound/ skin abnormality over the bony prominence area/ related to medical devices?</h3>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q2" value="yes, it is over bony promience area" id="q2-1">
+                            <label for="q2-1">Yes, it is over bony prominence area</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q2" value="yes, it is related to medical device" id="q2-2">
+                            <label for="q2-2">Yes, it is related to medical device. Then this is medical device related pressure injury (MDRPI)</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q2" value="no" id="q2-3">
+                            <label for="q2-3">No</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="question3" style="display: none;">
+                    <h3>3. Is it an open wound?</h3>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q3" value="yes" id="q3-1">
+                            <label for="q3-1">Yes</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q3" value="no" id="q3-2">
+                            <label for="q3-2">No</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="question4" style="display: none;">
+                    <h3>4. Do you see bone/ tendon structure? i.e. no slough/ eschar blocks the woundbed</h3>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q4" value="yes" id="q4-1">
+                            <label for="q4-1">Yes</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q4" value="no" id="q4-2">
+                            <label for="q4-2">No</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="question5" style="display: none;">
+                    <h3>5. Do you see subcutaneous fat? i.e. no slough/ eschar blocks the woundbed</h3>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q5" value="yes" id="q5-1">
+                            <label for="q5-1">Yes</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q5" value="no" id="q5-2">
+                            <label for="q5-2">No</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="question5a" style="display: none;">
+                    <h3>5a. Do you see eschar/slough?</h3>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q5a" value="yes" id="q5a-1">
+                            <label for="q5a-1">Yes</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q5a" value="no" id="q5a-2">
+                            <label for="q5a-2">No</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="question6" style="display: none;">
+                    <h3>6. Does blister present?</h3>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q6" value="yes" id="q6-1">
+                            <label for="q6-1">Yes</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q6" value="no" id="q6-2">
+                            <label for="q6-2">No</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="question8" style="display: none;">
+                    <h3>8. Is the skin blanchable? i.e. an area of skin that temporarily turns white or pale when pressure is applied</h3>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q8" value="yes" id="q8-1">
+                            <label for="q8-1">Yes</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q8" value="no" id="q8-2">
+                            <label for="q8-2">No</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="question10" style="display: none;">
+                    <h3>10. Is the wound related to moisture?</h3>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q10" value="yes" id="q10-1">
+                            <label for="q10-1">Yes</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q10" value="no" id="q10-2">
+                            <label for="q10-2">No</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="question11" style="display: none;">
+                    <h3>11. Is the wound located at the perineal area?</h3>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q11" value="yes" id="q11-1">
+                            <label for="q11-1">Yes</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q11" value="no" id="q11-2">
+                            <label for="q11-2">No</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="question12" style="display: none;">
+                    <h3>12. Is the non-PI wound open?</h3>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q12" value="yes" id="q12-1">
+                            <label for="q12-1">Yes</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q12" value="no" id="q12-2">
+                            <label for="q12-2">No</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="result" style="display: none;">
+                    <div class="result-container">
+                        <div class="result-title">Staging Result</div>
+                        <p id="resultText"></p>
+                        <div class="btn-container">
+                            <button type="button" class="btn" onclick="location.reload()">Start New Assessment</button>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-container" id="comparisonContainer" style="display: none;">
+                        <div class="comparison-title">Comparison Result</div>
+                        <div class="comparison-item">
+                            <span class="comparison-label">Initial Assessment:</span>
+                            <span class="comparison-value initial-value" id="initialValue"></span>
+                        </div>
+                        <div class="comparison-item">
+                            <span class="comparison-label">Final Result:</span>
+                            <span class="comparison-value final-value" id="finalValue"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-navigation">
+                    <button type="button" class="btn btn-outline btn-prev" id="prevBtn" style="display: none;">Previous</button>
+                    <button type="button" class="btn btn-next" id="nextBtn">Next</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let currentQuestion = 0;
+        const questions = [
+            'question1a', 'question1', 'question2', 'question3', 
+            'question4', 'question5', 'question5a', 'question6', 
+            'question8', 'question10', 'question11', 'question12'
+        ];
+        const stepIndicators = document.querySelectorAll('.step');
+        
+        // Store initial assessment
+        let initialAssessment = '';
+        
+        // Update progress bar
+        function updateProgress() {
+            const progress = ((currentQuestion) / (questions.length)) * 100;
+            document.getElementById('progress').style.width = `${progress}%`;
+        }
+        
+        // Update step indicators
+        function updateStepIndicators() {
+            stepIndicators.forEach((step, index) => {
+                if (index <= currentQuestion) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+        }
+        
+        // Show next question
+        function showNext() {
+            const current = document.getElementById(questions[currentQuestion]);
+            const next = document.getElementById(questions[currentQuestion + 1]);
+            
+            if (current) {
+                current.classList.remove('active');
+                current.style.display = 'none';
+            }
+            
+            if (next) {
+                next.classList.add('active');
+                next.style.display = 'block';
+                currentQuestion++;
+                updateProgress();
+                updateStepIndicators();
+                
+                document.getElementById('prevBtn').style.display = currentQuestion > 0 ? 'inline-block' : 'none';
+                document.getElementById('nextBtn').style.display = currentQuestion < questions.length ? 'inline-block' : 'none';
+            }
+        }
+        
+        // Show result
+        function showResult(resultText) {
+            document.querySelectorAll('.question').forEach(q => {
+                q.classList.remove('active');
+                q.style.display = 'none';
+            });
+            
+            document.getElementById('resultText').innerHTML = resultText;
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('nextBtn').style.display = 'none';
+            document.getElementById('prevBtn').style.display = 'none';
+            
+            // Show comparison
+            document.getElementById('comparisonContainer').style.display = 'block';
+            document.getElementById('initialValue').textContent = initialAssessment || 'Not specified';
+            document.getElementById('finalValue').textContent = resultText;
+            
+            updateProgress();
+        }
+        
+        // Show previous question
+        function showPrev() {
+            if (currentQuestion > 0) {
+                const current = document.getElementById(questions[currentQuestion]);
+                const prev = document.getElementById(questions[currentQuestion - 1]);
+                
+                if (current) {
+                    current.classList.remove('active');
+                    current.style.display = 'none';
+                }
+                
+                if (prev) {
+                    prev.classList.add('active');
+                    prev.style.display = 'block';
+                    currentQuestion--;
+                    updateProgress();
+                    updateStepIndicators();
+                }
+                
+                document.getElementById('prevBtn').style.display = currentQuestion > 0 ? 'inline-block' : 'none';
+                document.getElementById('nextBtn').style.display = 'inline-block';
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
+            updateStepIndicators();
+            document.getElementById('prevBtn').style.display = 'none';
+            
+            // Attach event listeners to radio buttons
+            const radios = document.querySelectorAll('input[type="radio"]');
+            radios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.name.startsWith('q0')) {
+                        initialAssessment = this.value;
+                        showNext();
+                    } else if (this.value === 'yes' || this.value === 'no') {
+                        // Check for specific conditions that require showing next question
+                        if (this.name === 'q1' && this.value === 'no, skin abnormal') {
+                            showNext();
+                        } else if (this.name === 'q2' && this.value === 'yes, it is over bony promience area') {
+                            showNext();
+                        } else if (this.name === 'q3' && this.value === 'yes') {
+                            showNext();
+                        } else if (this.name === 'q3' && this.value === 'no') {
+                            showNext();
+                        } else if (this.name === 'q4' && this.value === 'yes') {
+                            showResult('It is Stage 4 PI.');
+                        } else if (this.name === 'q4' && this.value === 'no') {
+                            showNext();
+                        } else if (this.name === 'q5' && this.value === 'yes') {
+                            showResult('It is Stage 3 PI.');
+                        } else if (this.name === 'q5' && this.value === 'no') {
+                            showNext();
+                        } else if (this.name === 'q5a' && this.value === 'yes') {
+                            showResult('It is Unstageable.');
+                        } else if (this.name === 'q5a' && this.value === 'no') {
+                            showResult('It is Stage 2.');
+                        } else if (this.name === 'q6' && this.value === 'yes') {
+                            showResult('Blood filled blister = Deep Tissue Injury (DTI).<br>Serous i.e. clear filled blister = Stage 2 PI.');
+                        } else if (this.name === 'q6' && this.value === 'no') {
+                            showNext();
+                        } else if (this.name === 'q8' && this.value === 'yes') {
+                            showResult('It is not a PI.');
+                        } else if (this.name === 'q8' && this.value === 'no') {
+                            showResult('Light purple= DTI<br> Non-blanchable redness i.e. does not turn white temporarily = Stage 1 PI.');
+                        } else if (this.name === 'q10' && this.value === 'yes') {
+                            showNext();
+                        } else if (this.name === 'q10' && this.value === 'no') {
+                            showNext();
+                        } else if (this.name === 'q11' && this.value === 'yes') {
+                            showResult('It is not PI but IAD (incontinence associated dermatitis).');
+                        } else if (this.name === 'q11' && this.value === 'no') {
+                            showResult('It is not PI but MASD (moisture associated skin damage).');
+                        } else if (this.name === 'q12' && this.value === 'yes') {
+                            showResult('Chart the wound according to its characteristics, e.g. laceration, abrasion, open surgical wound, venous ulcer etc.');
+                        } else if (this.name === 'q12' && this.value === 'no') {
+                            showResult('Chart the wound according to its characteristics, e.g. bruise, rash, cellulitis, etc.');
+                        } else if (this.name === 'q1' && this.value === 'yes') {
+                            showResult('There is no Pressure Injury. Perform Braden Score.');
+                        } else if (this.name === 'q1' && this.value === 'no, mucosal membrane abnormal') {
+                            showResult('Mucosal membrane pressure injuries occur on mucous membranes, usually where a medical device has been in place.<br>These injuries cannot be staged.');
+                        }
+                    }
+                });
+            });
+            
+            // Button event listeners
+            document.getElementById('nextBtn').addEventListener('click', showNext);
+            document.getElementById('prevBtn').addEventListener('click', showPrev);
+        });
+    </script>
+</body>
+</html>
