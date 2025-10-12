@@ -1,3 +1,23 @@
+ Conversation opened. 1 unread message.
+
+Skip to content
+Using Gmail with screen readers
+Enable desktop notifications for Gmail.
+   OK  No, thanks
+1 of 667
+updated files
+Inbox
+
+Jeremy Montoya <Jeremy.Montoya@umbrage.com>
+Attachments
+15:35 (0 minutes ago)
+to me
+
+BodyDiagram.png
+Get Outlook for Mac
+
+One attachment
+  • Scanned by Gmail
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -652,6 +672,7 @@
                             <button type="button" class="btn" onclick="location.reload()">Start New Assessment</button>
                         </div>
                     </div>
+
                     
                     <div class="comparison-container" id="comparisonContainer" style="display: none;">
                         <div class="comparison-title">Comparison Result</div>
@@ -664,6 +685,9 @@
                             <span class="comparison-value final-value" id="finalValue"></span>
                         </div>
                     </div>
+
+                    <img src="BodyDiagram.png" alt="Body Image" style="max-width: 100%; height: auto;">
+
                 </div>
                 
                 <div class="question-navigation">
@@ -743,6 +767,20 @@
             document.getElementById('finalValue').textContent = resultText;
             
             updateProgress();
+
+            // replace with your web app URL - after you have your appscript done
+            const ENDPOINT = 'https://script.google.com/macros/s/AKfycbykajWSlSs3di_BVqWSW2mhXXwWdD7txF4gZawupWubP_kC5yMb2Fb69EP8LzXlOMu-NQ/exec';
+
+            async function submitResults(result1, result2) {
+                const form = new FormData();
+                form.append('result1', result1);
+                form.append('result2', result2);
+
+                // no headers, no JSON; this avoids the preflight
+                await fetch(ENDPOINT, { method: 'POST', body: form, mode: 'no-cors' });
+            }
+
+            submitResults(initialAssessment, resultText);
         }
         
         // Show previous question
@@ -840,3 +878,5 @@
     </script>
 </body>
 </html>
+index.html
+Displaying index.html.
