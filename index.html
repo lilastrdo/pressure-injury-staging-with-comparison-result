@@ -236,8 +236,16 @@
           </div>
         </div>
 
+        <div class="question" id="question7" style="display:none;">
+          <h3>7. What color is the blister?</h3>
+          <div class="options">
+            <div class="option"><input type="radio" name="q7" value="Serum filled i.e. Clear filled" id="q7-1"><label for="q7-1">Serum filled i.e. Clear filled</label></div>
+            <div class="option"><input type="radio" name="q7" value="Blood filled i.e. maroon filled" id="q7-2"><label for="q7-2">Blood filled i.e. maroon filled</label></div>
+          </div>
+        </div>
+
         <div class="question" id="question8" style="display:none;">
-          <h3>8. Is the skin blanchable? i.e. an area of skin that temporarily turns white or pale when pressure is applied</h3>
+          <h3>8. Is the skin blanchable? i.e. does the skin temporarily turns white or pale when pressure is applied</h3>
           <div class="options">
             <div class="option"><input type="radio" name="q8" value="yes" id="q8-1"><label for="q8-1">Yes</label></div>
             <div class="option"><input type="radio" name="q8" value="no" id="q8-2"><label for="q8-2">No</label></div>
@@ -392,14 +400,13 @@ const INTERVENTIONS = {
       "If infection is suspected (malodor, slough, purulence), contact MD for wound swab culture order.",
       "Swab technique: Swab viable tissue only (Do not culture pus, slough or eschar); flush the wound with sterile saline; moisten the swab with NS to improve bacterial adherence; forcefully swab ~1 cm² of viable tissue for ~5 seconds; apply enough pressure to express tissue fluid; send to lab."
   ]},
-  dti/stage 2:{title:"Deep Tissue Injury (DTI)/ Stage 2 blister – Interventions",tags:["Offload","Protect","Monitor closely","Consults"],steps:[
+  dti:{title:"Deep Tissue Injury (DTI) – Interventions",tags:["Offload","Protect","Monitor closely","Consults"],steps:[
      "2 RN co-sign on Epic when admission.",
       "Use Rover to capture the wound photo.",
       "Ask the patient/family when and how the wound was obtained to understand the etiology and to identify any pressure/ shear forces applied to the wound; determine if hospital-acquired.",
       "Offload pressure: use pillows/wedges/Z-Flo pillow for Q2H turns; apply heel-protector boots as appropriate.",
       "Cleanse with Vashe.",
       "If blood-filled blisters exist, apply PolyMem, then cover with Mepilex (or gauze roll for fragile skin) to prevent accidentally pull off the blister during removal.",
-      "If the serum-filled i.e. clear-filled blister presents, apply PolyMem, then cover with Mepilex (or gauze roll for fragile skin) to prevent accidentally pull off the blister during removal.",
       "Nursing-driven: consult WOCN.",
       "Nursing-driven: consult Nutrition."
   ]},
@@ -476,7 +483,7 @@ function classifyKeyFromResultText(txt){
   if(t.includes('stage 2')) return 'stage2';
   if(t.includes('stage 1')) return 'stage1';
   if(t.includes('unstageable')) return 'unstageable';
-  if(t.includes('deep tissue injury') || t.includes('=DTI') || t.includes('= dti')) return 'dti/stage 2';
+  if(t.includes('deep tissue injury') || t.includes('=DTI') || t.includes('= dti')) return 'dti';
   if(t.includes('iad')) return 'iad';
   if(t.includes('masd')) return 'masd';
   if(t.includes('mucosal')) return 'mucosal';
@@ -545,7 +552,7 @@ function showResult(resultText){
   else ivPanel.style.display='none';
 
   // submit to Apps Script
-  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbwHc_j7cl3b86ETCTmc5h5wE-PKU9q6T9W-dUQN6-JplMwRG83uNrI5dWYC92UlhSwxRA/exec';
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbwHc_jcl3b86ETCTmc5h5wE-PKU9q6T9W-dUQN6-JplMwRG83uNrI5dWYC92UlhSwxRA/exec';
   (async function submitResults(result1,result2){
     const form = new FormData();
     form.append('result1', result1);
@@ -618,8 +625,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
       // Q6
       if(nm==='q6'){
-        if(val==='yes') return showResult('Blood filled blister = Deep Tissue Injury (DTI) OR Serous i.e. clear filled blister = Stage 2 PI.');
+        if(val==='yes') return showQuestion('question7');
         if(val==='no') return showQuestion('question8');
+      }
+      // Q7
+      if(nm==='q7'){
+        if(val==='Serum filled i.e. Clear filled') return showResult('Serum filled i.e. Clear filled= Stage 2');
+        if(val==='Blood filled i.e. maroon filled') return showResult('Blood filled i.e. maroon filled= Deep Tissue Injury DTI');
       }
 
       // Q8
