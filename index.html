@@ -392,13 +392,14 @@ const INTERVENTIONS = {
       "If infection is suspected (malodor, slough, purulence), contact MD for wound swab culture order.",
       "Swab technique: Swab viable tissue only (Do not culture pus, slough or eschar); flush the wound with sterile saline; moisten the swab with NS to improve bacterial adherence; forcefully swab ~1 cm² of viable tissue for ~5 seconds; apply enough pressure to express tissue fluid; send to lab."
   ]},
-  dti:{title:"Deep Tissue Injury (DTI) – Interventions",tags:["Offload","Protect","Monitor closely","Consults"],steps:[
+  dti/stage 2:{title:"Deep Tissue Injury (DTI)/ Stage 2 blister – Interventions",tags:["Offload","Protect","Monitor closely","Consults"],steps:[
      "2 RN co-sign on Epic when admission.",
       "Use Rover to capture the wound photo.",
       "Ask the patient/family when and how the wound was obtained to understand the etiology and to identify any pressure/ shear forces applied to the wound; determine if hospital-acquired.",
       "Offload pressure: use pillows/wedges/Z-Flo pillow for Q2H turns; apply heel-protector boots as appropriate.",
       "Cleanse with Vashe.",
       "If blood-filled blisters exist, apply PolyMem, then cover with Mepilex (or gauze roll for fragile skin) to prevent accidentally pull off the blister during removal.",
+      "If the serum-filled i.e. clear-filled blister presents, apply PolyMem, then cover with Mepilex (or gauze roll for fragile skin) to prevent accidentally pull off the blister during removal.",
       "Nursing-driven: consult WOCN.",
       "Nursing-driven: consult Nutrition."
   ]},
@@ -475,7 +476,7 @@ function classifyKeyFromResultText(txt){
   if(t.includes('stage 2')) return 'stage2';
   if(t.includes('stage 1')) return 'stage1';
   if(t.includes('unstageable')) return 'unstageable';
-  if(t.includes('deep tissue injury') || t.includes('=DTI') || t.includes('= dti')) return 'dti';
+  if(t.includes('deep tissue injury') || t.includes('=DTI') || t.includes('= dti')) return 'dti/stage 2';
   if(t.includes('iad')) return 'iad';
   if(t.includes('masd')) return 'masd';
   if(t.includes('mucosal')) return 'mucosal';
@@ -617,7 +618,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
       // Q6
       if(nm==='q6'){
-        if(val==='yes') return showResult('Serous i.e. clear filled blister = Stage 2 PI OR Blood filled blister = Deep Tissue Injury (DTI).');
+        if(val==='yes') return showResult('Blood filled blister = Deep Tissue Injury (DTI) OR Serous i.e. clear filled blister = Stage 2 PI.');
         if(val==='no') return showQuestion('question8');
       }
 
