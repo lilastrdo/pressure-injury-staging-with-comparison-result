@@ -252,6 +252,14 @@
           </div>
         </div>
 
+        <div class="question" id="question9" style="display:none;">
+          <h3>9. If the skin does not turn white, what color is the skin?</h3>
+          <div class="options">
+            <div class="option"><input type="radio" name="q9" value="maroon/ light purple" id="q9-1"><label for="q9-1">maroon/ light purple</label></div>
+            <div class="option"><input type="radio" name="q9" value="red" id="q9-2"><label for="q9-2">red</label></div>
+          </div>
+        </div>
+
         <div class="question" id="question10" style="display:none;">
           <h3>10. Is the wound related to moisture?</h3>
           <div class="options">
@@ -628,6 +636,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         if(val==='yes') return showQuestion('question7');
         if(val==='no') return showQuestion('question8');
       }
+      
       // Q7
       if(nm==='q7'){
         if(val==='Serum filled i.e. Clear filled') return showResult('Serum filled i.e. Clear filled= Stage 2');
@@ -637,7 +646,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
       // Q8
       if(nm==='q8'){
         if(val==='yes') return showResult('It is not a PI.');
-        if(val==='no') return showResult('Light purple = Deep Tissue Injury (DTI) OR Non-blanchable redness = Stage 1 PI.');
+        if(val==='no') return showQuestion('question 9');
+      }
+      
+      // Q9
+      if(nm==='q9'){
+        if(val==='maroon/light purple') return showResult('maroon/light purple= Deep Tissue Injury DTI');
+        if(val==='red') return showResult('red= Stage 1');
       }
 
       // Q10
