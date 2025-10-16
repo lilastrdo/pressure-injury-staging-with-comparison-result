@@ -248,37 +248,60 @@
 
         <!-- Results + Interventions -->
         <div id="result" style="display:none;">
-          <img src="common pressure injury.jfif" alt="Body Image" style="max-width:75%;height:auto;margin-top:10px">
-          <img src="commonbuttocksleison.jfif" alt="Body Image" style="max-width:50%;height:auto;margin-top:10px">
-          <div class="result-container">
-            <div class="result-title">Staging Result</div>
-            <p id="resultText"></p>
+  <!-- Two images side by side -->
+  <div style="
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:8px;
+  ">
+    <img src="common pressure injury.jfif"
+         alt="Body Image"
+         style="width:48%; max-width:480px; height:auto; border-radius:8px;">
+    <img src="commonbuttocksleison.jfif"
+         alt="Body Image"
+         style="width:48%; max-width:480px; height:auto; border-radius:8px;">
+  </div>
 
-            <div class="comparison-container" id="comparisonContainer" style="display:none;">
-              <div class="comparison-title">Comparison Result</div>
-              <div class="comparison-item"><span class="comparison-label">Initial Assessment:</span><span class="comparison-value initial-value" id="initialValue"></span></div>
-              <div class="comparison-item"><span class="comparison-label">Final Result:</span><span class="comparison-value final-value" id="finalValue"></span></div>
-            </div>
-          </div>
+  <!-- Result panel -->
+  <div class="result-container">
+    <div class="result-title">Staging Result</div>
+    <p id="resultText"></p>
 
-          <!-- Interventions panel (auto-filled) -->
-          <section class="interventions" id="interventionsPanel" style="display:none;">
-            <header>
-              <h2 id="ivTitle">Interventions</h2>
-              <div id="ivTags"></div>
-            </header>
-            <ol class="steps" id="ivSteps"></ol>
-            <div class="tools" style="margin-top:10px">
-              <button class="btn-ghost btn" id="ivCopyBtn">Copy list</button>
-              <button class="btn-outline btn" id="ivPrintBtn">Print / PDF</button>
-            </div>
-            <div class="hint">Educational quick guide. Follow facility policy, WOCN guidance, and provider orders.</div>
-          </section>
+    <div class="comparison-container" id="comparisonContainer" style="display:none;">
+      <div class="comparison-title">Comparison Result</div>
+      <div class="comparison-item">
+        <span class="comparison-label">Initial Assessment:</span>
+        <span class="comparison-value initial-value" id="initialValue"></span>
+      </div>
+      <div class="comparison-item">
+        <span class="comparison-label">Final Result:</span>
+        <span class="comparison-value final-value" id="finalValue"></span>
+      </div>
+    </div>
+  </div>
 
-          <div class="question-navigation" style="margin-top:14px">
-            <button type="button" class="btn btn-outline btn-prev" onclick="location.reload()">Start New Assessment</button>
-          </div>
-        </div>
+  <!-- Interventions panel -->
+  <section class="interventions" id="interventionsPanel" style="display:none;">
+    <header>
+      <h2 id="ivTitle">Interventions</h2>
+      <div id="ivTags"></div>
+    </header>
+    <ol class="steps" id="ivSteps"></ol>
+    <div class="tools" style="margin-top:10px">
+      <button class="btn-ghost btn" id="ivCopyBtn">Copy list</button>
+      <button class="btn-outline btn" id="ivPrintBtn">Print / PDF</button>
+    </div>
+    <div class="hint">Educational quick guide. Follow facility policy, WOCN guidance, and provider orders.</div>
+  </section>
+
+  <div class="question-navigation" style="margin-top:14px">
+    <button type="button" class="btn btn-outline btn-prev" onclick="location.reload()">Start New Assessment</button>
+  </div>
+</div>
+
 
         <div class="question-navigation">
           <button type="button" class="btn btn-prev btn-outline" id="prevBtn" style="display:none;">Previous</button>
