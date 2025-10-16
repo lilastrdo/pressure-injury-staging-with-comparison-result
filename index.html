@@ -475,7 +475,7 @@ function classifyKeyFromResultText(txt){
   if(t.includes('stage 2')) return 'stage2';
   if(t.includes('stage 1')) return 'stage1';
   if(t.includes('unstageable')) return 'unstageable';
-  if(t.includes('deep tissue injury') || t.includes(' dti') || t.includes('= dti')) return 'dti';
+  if(t.includes('deep tissue injury') || t.includes('=DTI') || t.includes('= dti')) return 'dti';
   if(t.includes('iad')) return 'iad';
   if(t.includes('masd')) return 'masd';
   if(t.includes('mucosal')) return 'mucosal';
