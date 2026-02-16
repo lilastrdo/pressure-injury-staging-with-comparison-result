@@ -122,7 +122,7 @@
     .container{box-shadow:none}
     a::after{content:" (" attr(href) ")";font-size:10px}
   }
-  }
+  
 </style>
 </head>
 <body>
@@ -160,7 +160,7 @@
         </div>
 
         <!-- Questions -->
-        <div class="question active" id="question1a">
+        <div class="question active" id="question0">
           <h3>0. What type of pressure injury do you think your wound is?</h3>
           <div class="options">
             <div class="option"><input type="radio" name="q0" value="PI Stage 1" id="q0-1"><label for="q0-1">PI Stage 1</label></div>
@@ -186,9 +186,18 @@
             <div class="option"><input type="radio" name="q1" value="no, skin abnormal" id="q1-3"><label for="q1-3">No, skin abnormal</label></div>
           </div>
         </div>
+        
+        <div class="question" id="question1a" style="display:none;">
+          <h3>1a. Understand the wound's etiology. Ask the patient or family and check the patient's chart, how did the patient obtain the wound?</h3>
+          <div class="options">
+            <div class="option"><input type="radio" name="q1a" value="Prolonged staying in the bed and/or related to shear force" id="q1a-1"><label for="q1a-1">Prolonged staying in the bed and/or related to shear force</label></div>
+            <div class="option"><input type="radio" name="q1a" value="Non- pressure related- e.g. surgical wounds, mechanical fall, diarrhea, incontinence, PAD, PVD, DM ulcer etc." id="q1a-2"><label for="q1a-2">Non- pressure related- e.g. surgical wounds, mechanical fall, diarrhea, incontinence, PAD, PVD, DM ulcer etc</label></div>
+            <div class="option"><input type="radio" name="q1a" value="No idea how the wound created or No idea there is a wound" id="q1a-3"><label for="q1a-3">No idea how the wound created or No idea there is a wound</label></div>
+          </div>
+        </div>
 
         <div class="question" id="question2" style="display:none;">
-          <h3>2. Is the wound/ skin abnormality <br> a) over the bony prominence area AND CAUSED BY prolonged pressure or shear force; <br> b)related to medical device?</h3>
+          <h3>2. Is the wound/ skin abnormality <br> a) over the bony prominence area AND CAUSED BY prolonged pressure or shear force (i.e. caused by sliding down in bed/ chair); <br> b)related to medical device?</h3>
           <div class="options">
             <div class="option"><input type="radio" name="q2" value="yes, it is over bony promience area" id="q2-1"><label for="q2-1">Yes, it is over bony prominence area AND caused by prolonged pressure or shear force</label></div>
             <div class="option"><input type="radio" name="q2" value="yes, it is related to medical device" id="q2-2"><label for="q2-2">Yes, it is related to medical device. Then this is medical device related pressure injury (MDRPI)</label></div>
@@ -243,7 +252,7 @@
             <div class="option"><input type="radio" name="q7" value="Blood filled i.e. maroon filled. Or the presence of mushy/ boggy skin in darker skin tone" id="q7-2"><label for="q7-2">Blood filled i.e. maroon filled. Or the presence of mushy/ boggy skin in darker skin tone</label></div>
           </div>
         </div>
-
+        
         <div class="question" id="question8" style="display:none;">
           <h3>8. Is the skin blanchable? <br>i.e. does the skin temporarily turns white or pale when pressure is applied?</h3>
           <div class="options">
@@ -343,7 +352,6 @@
 
 
         <div class="question-navigation">
-          <button type="button" class="btn btn-prev btn-outline" id="prevBtn" style="display:none;">Previous</button>
           <button type="button" class="btn btn-next" id="nextBtn">Next</button>
         </div>
       </form>
@@ -356,7 +364,7 @@ const INTERVENTIONS = {
   stage1:{title:"Stage 1 – Interventions",tags:["Offload","Protect","Assess","Cleanse"],steps:[
      "2 RN co-sign on Epic when admission.",
       "Use Rover to capture the wound photo.",
-      "Ask the patient/family when and how the wound was obtained to understand the etiology and to identify any pressure/ shear forces applied to the wound; determine if hospital-acquired.",
+      "Ask the patient/family when and how the wound was obtained to understand the etiology and to identify any pressure and shear forces applied to the wound; determine if hospital-acquired.",
       "Offload pressure: use pillows/wedges/Z-Flo pillow for Q2H turns; apply heel-protector boots as appropriate.",
       "Cleanse with Vashe.",
       "Apply appropriate Mepilex foam to redistribute pressure and shear."
@@ -364,7 +372,7 @@ const INTERVENTIONS = {
   stage2:{title:"Stage 2 – Interventions",tags:["Offload","Moist wound care","Assess","Consults"],steps:[
      "2 RN co-sign on Epic when admission.",
       "Use Rover to capture the wound photo.",
-      "Ask the patient/family when and how the wound was obtained to understand the etiology and to identify any pressure/ shear forces applied to the wound; determine if hospital-acquired.",
+      "Ask the patient/family when and how the wound was obtained to understand the etiology and to identify any pressure and shear forces applied to the wound; determine if hospital-acquired.",
       "Offload pressure: use pillows/wedges/Z-Flo pillow for Q2H turns; apply heel-protector boots as appropriate.",
       "Cleanse with Vashe.",
       "Apply appropriate Mepilex foam to redistribute pressure and shear.",
@@ -375,7 +383,7 @@ const INTERVENTIONS = {
   stage3:{title:"Stage 3 – Interventions",tags:["Offload","Debridement eval","Infection screen","Consults"],steps:[
      "2 RN co-sign on Epic when admission.",
       "Use Rover to capture the wound photo.",
-      "Ask the patient/family when and how the wound was obtained to understand the etiology and to identify any pressure/ shear forces applied to the wound; determine if hospital-acquired.",
+      "Ask the patient/family when and how the wound was obtained to understand the etiology and to identify any pressure and shear forces applied to the wound; determine if hospital-acquired.",
       "Offload pressure: use pillows/wedges/Z-Flo pillow for Q2H turns; apply heel-protector boots as appropriate.",
       "Cleanse with Vashe.",
       "Apply appropriate Mepilex foam to redistribute pressure and shear.",
@@ -387,7 +395,7 @@ const INTERVENTIONS = {
   stage4:{title:"Stage 4 – Interventions",tags:["Offload","Advanced care","Infection screen","Consults"],steps:[
     "2 RN co-sign on Epic when admission.",
       "Use Rover to capture the wound photo.",
-      "Ask the patient/family when and how the wound was obtained to understand the etiology and to identify any pressure/ shear forces applied to the wound; determine if hospital-acquired.",
+      "Ask the patient/family when and how the wound was obtained to understand the etiology and to identify any pressure and shear forces applied to the wound; determine if hospital-acquired.",
       "Offload pressure: use pillows/wedges/Z-Flo pillow for Q2H turns; apply heel-protector boots as appropriate.",
       "Cleanse with Vashe.",
       "Apply appropriate Mepilex foam to redistribute pressure and shear.",
@@ -399,7 +407,7 @@ const INTERVENTIONS = {
   unstageable:{title:"Unstageable – Interventions",tags:["Offload","Do not stage yet","Debridement eval","Consults"],steps:[
     "2 RN co-sign on Epic when admission.",
       "Use Rover to capture the wound photo.",
-      "Ask the patient/family when and how the wound was obtained to understand the etiology and to identify any pressure/ shear forces applied to the wound; determine if hospital-acquired.",
+      "Ask the patient/family when and how the wound was obtained to understand the etiology and to identify any pressure and shear forces applied to the wound; determine if hospital-acquired.",
       "Offload pressure: use pillows/wedges/Z-Flo pillow for Q2H turns; apply heel-protector boots as appropriate.",
       "Cleanse with Vashe.",
       "Apply Mepilex foam to redistribute pressure and shear.",
@@ -459,7 +467,7 @@ const INTERVENTIONS = {
 
 /* ----------------------- Helpers: progress + steps ----------------------- */
 const stepIndicators = document.querySelectorAll('.step');
-const questionsOrder = ['question1a','question1','question2','question3','question4','question5','question5a','question6','question8','question10','question11','question12'];
+const questionsOrder = ['question0','question1','question1a','question2','question3','question4','question5','question5a','question6','question8','question10','question11','question12'];
 let currentIndex = 0;
 
 function updateProgress(){
@@ -479,7 +487,6 @@ function showQuestion(id){
   // sync index + UI
   const idx = questionsOrder.indexOf(id);
   if(idx >= 0) currentIndex = idx;
-  document.getElementById('prevBtn').style.display = currentIndex>0 ? 'inline-block' : 'none';
   document.getElementById('nextBtn').style.display = 'inline-block';
   updateProgress(); updateSteps();
 }
@@ -497,7 +504,7 @@ function classifyKeyFromResultText(txt){
   if(t.includes('masd')) return 'masd';
   if(t.includes('mucosal')) return 'mucosal';
   if(t.includes('no pressure injury')) return 'braden';
-  if(t.includes('not a pi')) return 'notpi';
+  if(t.includes('not a PI')) return 'not a PI';
   return null;
 }
 
@@ -547,7 +554,6 @@ function showResult(resultText){
   document.getElementById('resultText').innerHTML = resultText;
   document.getElementById('result').style.display='block';
   document.getElementById('nextBtn').style.display='none';
-  document.getElementById('prevBtn').style.display='none';
   document.getElementById('comparisonContainer').style.display='block';
   document.getElementById('initialValue').textContent = initialAssessment || 'Not specified';
   document.getElementById('finalValue').textContent = resultText;
@@ -574,16 +580,11 @@ function showResult(resultText){
 document.addEventListener('DOMContentLoaded', ()=>{
   // init
   updateProgress(); updateSteps();
-  document.getElementById('prevBtn').style.display='none';
 
   // Next/Prev (linear) – optional convenience
   document.getElementById('nextBtn').addEventListener('click', ()=>{
     const nextId = questionsOrder[Math.min(currentIndex+1, questionsOrder.length-1)];
     showQuestion(nextId);
-  });
-  document.getElementById('prevBtn').addEventListener('click', ()=>{
-    const prevId = questionsOrder[Math.max(currentIndex-1, 0)];
-    showQuestion(prevId);
   });
 
   // Radio logic: mirror index.html flow
@@ -597,9 +598,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
       // Q1
       if(nm==='q1'){
         if(val==='yes') return showResult('There is no Pressure Injury. Perform Braden Score.');
-        if(val==='no, mucosal membrane abnormal') return showResult('Mucosal membrane pressure injuries occur on mucous membranes, usually where a medical device has been in place.<br>These injuries cannot be staged.');
-        if(val==='no, skin abnormal') return showQuestion('question2');
+        if(val==='no, mucosal membrane abnormal') return showResult('Understand how the patient obtained this mucosal membrane sore. If it is related to medical device (e.g. ETT, dobhoff, NGT etc), this is named as mucosal membrane pressure injury. However, these pressure injuries cannot be staged.');
+        if(val==='no, skin abnormal') return showQuestion('question1a');
       }
+
+      // Q1a
+      if(nm==='q1a'){
+        if(val==='Prolonged staying in the bed and/or related to shear force') return showQuestion('question2');
+        if(val==='Non- pressure related- e.g. surgical wounds, mechanical fall, diarrhea, incontinence, PAD, PVD, DM ulcer etc.') return showQuestion('question10'); // keep flow identical
+        if(val==='No idea how the wound created or No idea there is a wound') return showQuestion('question2');
+      }
+
 
       // Q2
       if(nm==='q2'){
@@ -647,12 +656,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
       // Q8
       if(nm==='q8'){
         if(val==='yes') return showResult('It is not a PI.');
-        if(val==='no') return showQuestion('question 9');
+        if(val==='no') return showQuestion('question9');
       }
       
       // Q9
       if(nm==='q9'){
-        if(val==='maroon/light purple') return showResult('maroon/light purple= Deep Tissue Injury DTI');
+        if(val==='maroon/ light purple') return showResult('maroon/ light purple= Deep Tissue Injury DTI');
         if(val==='red') return showResult('red= Stage 1');
         if(val==='In dark skin tone, its colour may simply differ from the surrounding area e.g. tan/gray') return showResult('In dark skin tone, its colour may simply differ from the surrounding area e.g. tan/gray= Stage 1');
       }
