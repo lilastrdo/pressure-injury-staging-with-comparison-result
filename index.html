@@ -1,3 +1,4 @@
+anymore error..
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -142,9 +143,9 @@
         <div class="ib-row">
           <input id="patientId" type="text" placeholder="Identifier (optional): initials / visit ID only — no PHI"/>
           <div class="tools">
-            <button class="btn-ghost btn" id="copyBtn" title="Copy intervention list" disabled>Copy list</button>
-            <button class="btn-outline btn" id="printBtn" title="Print or save PDF" disabled>Print / PDF</button>
-          </div>
+    <button type="button" class="btn-ghost btn" id="copyBtn" title="Copy intervention list" disabled>Copy list</button>
+    <button type="button" class="btn-outline btn" id="printBtn" title="Print or save PDF" disabled>Print / PDF</button>
+</div>
         </div>
         <div class="hint">Copy/print activate after the tool determines the stage/type.</div>
       </div>
@@ -190,16 +191,16 @@
         <div class="question" id="question1a" style="display:none;">
           <h3>1a. Understand the wound's etiology. Ask the patient or family and check the patient's chart, how did the patient obtain the wound?</h3>
           <div class="options">
-            <div class="option"><input type="radio" name="q1a" value="Prolonged staying in the bed and/or related to shear force" id="q1a-1"><label for="q1a-1">Prolonged staying in the bed and/or related to shear force</label></div>
+            <div class="option"><input type="radio" name="q1a" value="Prolonged staying in the bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)" id="q1a-1"><label for="q1a-1">Prolonged staying in the bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)</label></div>
             <div class="option"><input type="radio" name="q1a" value="Non- pressure related- e.g. surgical wounds, mechanical fall, diarrhea, incontinence, PAD, PVD, DM ulcer etc." id="q1a-2"><label for="q1a-2">Non- pressure related- e.g. surgical wounds, mechanical fall, diarrhea, incontinence, PAD, PVD, DM ulcer etc</label></div>
             <div class="option"><input type="radio" name="q1a" value="No idea how the wound created or No idea there is a wound" id="q1a-3"><label for="q1a-3">No idea how the wound created or No idea there is a wound</label></div>
           </div>
         </div>
 
         <div class="question" id="question2" style="display:none;">
-          <h3>2. Is the wound/ skin abnormality <br> a) over the bony prominence area AND CAUSED BY prolonged pressure or shear force (i.e. caused by sliding down in bed/ chair); <br> b)related to medical device?</h3>
+          <h3>2. Is the wound/ skin abnormality <br> a) due to prolonged pressure on bony prominence area or shear force (i.e. caused by sliding down in bed/ chair); <br> b)related to medical device?</h3>
           <div class="options">
-            <div class="option"><input type="radio" name="q2" value="yes, it is over bony promience area" id="q2-1"><label for="q2-1">Yes, it is over bony prominence area AND caused by prolonged pressure or shear force</label></div>
+            <div class="option"><input type="radio" name="q2" value="yes, it is over bony prominence area" id="q2-1"><label for="q2-1">Yes, it is over bony prominence area AND caused by prolonged pressure or shear force</label></div>
             <div class="option"><input type="radio" name="q2" value="yes, it is related to medical device" id="q2-2"><label for="q2-2">Yes, it is related to medical device. Then this is medical device related pressure injury (MDRPI)</label></div>
             <div class="option"><input type="radio" name="q2" value="no" id="q2-3"><label for="q2-3">No, it is neither on bony area nor caused by prolonged pressure or shear force.</label></div>
           </div>
@@ -266,7 +267,7 @@
           <div class="options">
             <div class="option"><input type="radio" name="q9" value="maroon/ light purple" id="q9-1"><label for="q9-1">maroon/ light purple</label></div>
             <div class="option"><input type="radio" name="q9" value="red" id="q9-2"><label for="q9-2">red</label></div>
-            <div class="option"><input type="radio" name="q9" value="In dark skin tone, its colour may simply differ from the surrounding area e.g. tan/gray" id="q9-3"><label for="q9-3">In dark skin tone, its colour may simply differ from the surrounding area e.g. tan/gray</label></label></label></div>
+            <div class="option"><input type="radio" name="q9" value="In dark skin tone, its colour may simply differ from the surrounding area e.g. tan/gray" id="q9-3"><label for="q9-3">In dark skin tone, its colour may simply differ from the surrounding area e.g. tan/gray</label></div>
           </div>
         </div>
 
@@ -305,7 +306,7 @@
     flex-wrap:wrap;
     margin-top:8px;
   ">
-    <img src="common pressure injury.jfif"
+    <img src="common_pressure_injury.jfif"
          alt="Body Image"
          style="width:48%; max-width:480px; height:auto; border-radius:8px;">
     <img src="commonbuttocksleison.jfif"
@@ -339,9 +340,9 @@
     </header>
     <ol class="steps" id="ivSteps"></ol>
     <div class="tools" style="margin-top:10px">
-      <button class="btn-ghost btn" id="ivCopyBtn">Copy list</button>
-      <button class="btn-outline btn" id="ivPrintBtn">Print / PDF</button>
-    </div>
+    <button type="button" class="btn-ghost btn" id="ivCopyBtn">Copy list</button>
+    <button type="button" class="btn-outline btn" id="ivPrintBtn">Print / PDF</button>
+</div>
     <div class="hint">Educational quick guide. Follow facility policy, WOCN guidance, and provider orders.</div>
   </section>
 
@@ -349,11 +350,6 @@
     <button type="button" class="btn btn-outline btn-prev" onclick="location.reload()">Start New Assessment</button>
   </div>
 </div>
-
-
-        <div class="question-navigation">
-          <button type="button" class="btn btn-next" id="nextBtn">Next</button>
-        </div>
       </form>
     </div>
   </div>
@@ -456,6 +452,18 @@ const INTERVENTIONS = {
     "Protect and offload device pressure; review device necessity and fit.",
     "Consult WOCN/provider for specific care and documentation language."
   ]},
+  notpiyet:{
+  title:"Blanchable erythema (NOT a Pressure Injury yet) – Actions",
+  tags:["Offload","Protect","Monitor","Reassess"],
+  steps:[
+    "Blanchable erythema: monitor, offload, reassess.",
+    "If persists or becomes non-blanchable, consider Stage 1.",
+    "Offload immediately (turn schedule, heel offloading, device repositioning).",
+    "Reassess skin within a defined timeframe (e.g., next turn / within 2 hours) and document changes.",
+    "If erythema becomes non-blanchable or persists, reassess for Stage 1 and consult WOCN per protocol.",
+    "Check Braden score and implement prevention bundle based on risk.",
+    "Address contributing factors: moisture, friction/shear, nutrition, device pressure."
+  ]},
   braden:{title:"No Pressure Injury – Actions",tags:["Prevention","Risk assessment"],steps:[
       "2 RN co-sign on Epic when admission.",
       "If braden score <18 or mobility <2, Use Rover to capture heels, sacral baseline photo.",
@@ -467,7 +475,11 @@ const INTERVENTIONS = {
 
 /* ----------------------- Helpers: progress + steps ----------------------- */
 const stepIndicators = document.querySelectorAll('.step');
-const questionsOrder = ['question0','question1','question1a','question2','question3','question4','question5','question5a','question6','question8','question10','question11','question12'];
+const questionsOrder = [
+  'question0','question1','question1a','question2','question3','question4',
+  'question5','question5a','question6','question7','question8','question9',
+  'question10','question11','question12'
+];
 let currentIndex = 0;
 
 function updateProgress(){
@@ -487,7 +499,6 @@ function showQuestion(id){
   // sync index + UI
   const idx = questionsOrder.indexOf(id);
   if(idx >= 0) currentIndex = idx;
-  document.getElementById('nextBtn').style.display = 'inline-block';
   updateProgress(); updateSteps();
 }
 
@@ -499,12 +510,15 @@ function classifyKeyFromResultText(txt){
   if(t.includes('stage 2')) return 'stage2';
   if(t.includes('stage 1')) return 'stage1';
   if(t.includes('unstageable')) return 'unstageable';
-  if(t.includes('deep tissue injury') || t.includes('=DTI') || t.includes('= dti')) return 'dti';
+  if (t.includes('deep tissue injury') || t.includes('=dti') || t.includes('= dti')) return 'dti';
   if(t.includes('iad')) return 'iad';
   if(t.includes('masd')) return 'masd';
   if(t.includes('mucosal')) return 'mucosal';
+  if (t.includes('not a pi yet') || t.includes('blanchable erythema')) return 'notpiyet';
   if(t.includes('no pressure injury')) return 'braden';
-  if(t.includes('not a PI')) return 'not a PI';
+  if (t.includes('it is not pi but') || t.includes('it is not a pi but') || t.includes('not a pi but')) return 'notpi';
+  if (t.includes('chart the wound charateristics') || t.includes('chart the wound characteristics')) return 'notpi';
+  if (t.includes('chart the skin issue charateristics') || t.includes('chart the skin issue characteristics')) return 'notpi';
   return null;
 }
 
@@ -551,9 +565,8 @@ function showResult(resultText){
   // hide all questions
   document.querySelectorAll('.question').forEach(q=>{q.classList.remove('active');q.style.display='none'});
   // show result
-  document.getElementById('resultText').innerHTML = resultText;
+  document.getElementById('resultText').textContent = resultText;
   document.getElementById('result').style.display='block';
-  document.getElementById('nextBtn').style.display='none';
   document.getElementById('comparisonContainer').style.display='block';
   document.getElementById('initialValue').textContent = initialAssessment || 'Not specified';
   document.getElementById('finalValue').textContent = resultText;
@@ -581,12 +594,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
   // init
   updateProgress(); updateSteps();
 
-  // Next/Prev (linear) – optional convenience
-  document.getElementById('nextBtn').addEventListener('click', ()=>{
-    const nextId = questionsOrder[Math.min(currentIndex+1, questionsOrder.length-1)];
-    showQuestion(nextId);
-  });
-
   // Radio logic: mirror index.html flow
   document.querySelectorAll('input[type="radio"]').forEach(r=>{
     r.addEventListener('change', function(){
@@ -604,7 +611,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
       // Q1a
       if(nm==='q1a'){
-        if(val==='Prolonged staying in the bed and/or related to shear force') return showQuestion('question2');
+        if(val==='Prolonged staying in the bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)') return showQuestion('question2');
         if(val==='Non- pressure related- e.g. surgical wounds, mechanical fall, diarrhea, incontinence, PAD, PVD, DM ulcer etc.') return showQuestion('question10'); // keep flow identical
         if(val==='No idea how the wound created or No idea there is a wound') return showQuestion('question2');
       }
@@ -612,7 +619,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
       // Q2
       if(nm==='q2'){
-        if(val==='yes, it is over bony promience area') return showQuestion('question3');
+        if(val==='yes, it is over bony prominence area') return showQuestion('question3');
         if(val==='yes, it is related to medical device') return showQuestion('question3'); // keep flow identical
         if(val==='no') return showQuestion('question10');
       }
@@ -649,13 +656,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
       
       // Q7
       if(nm==='q7'){
-        if(val==='Serum filled i.e. Clear filled') return showResult('Serum filled i.e. Clear filled= Stage 2');
+        if(val==='Serum filled i.e. Clear filled') return showResult('It is Stage 2 PI. (Serum-filled blister)');
         if(val==='Blood filled i.e. maroon filled. Or the presence of mushy/ boggy skin in darker skin tone') return showResult('Blood filled i.e. maroon filled. Or the presence of mushy/ boggy skin in darker skin tone= Deep Tissue Injury DTI');
       }
 
       // Q8
       if(nm==='q8'){
-        if(val==='yes') return showResult('It is not a PI.');
+        if(val==='yes') return showResult('It is not a PI yet.');
         if(val==='no') return showQuestion('question9');
       }
       
