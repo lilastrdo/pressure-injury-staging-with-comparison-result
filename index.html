@@ -191,7 +191,8 @@
           <h3>1a. Understand the wound's etiology. Ask the patient or family and check the patient's chart, how did the patient obtain the wound?</h3>
           <div class="options">
             <div class="option"><input type="radio" name="q1a" value="Prolonged time in bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)" id="q1a-1"><label for="q1a-1">Prolonged time in bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)</label></div>
-            <div class="option"><input type="radio" name="q1a" value="Non- pressure related- e.g. surgical wounds, mechanical fall, diarrhea, incontinence, PAD, PVD, DM ulcer etc." id="q1a-2"><label for="q1a-2">Non- pressure related- e.g. surgical wounds, mechanical fall, diarrhea, incontinence, PAD, PVD, DM ulcer etc</label></div>
+            <div class="option"><input type="radio" name="q1a" value="Non- pressure related- e.g. surgical wounds, mechanical fall, PAD, PVD, DM ulcer, cellulitis, laceration etc." id="q1a-2"><label for="q1a-2">Non- pressure related- e.g. surgical wounds, mechanical fall, PAD, PVD, DM ulcer, cellulitis, laceration etc.</label></div>
+            <div class="option"><input type="radio" name="q1a" value="Mositure/ Rash related- e.g. incontinence/diarrhea/skin folds/stoma leaking/ drain leaking etc." id="q1a-3"><label for="q1a-3">Mositure/ Rash related- e.g. incontinence/diarrhea/skin folds/stoma leaking/ drain leaking etc.</label></div>
             <div class="option"><input type="radio" name="q1a" value="No idea how the wound created or No idea there is a wound" id="q1a-3"><label for="q1a-3">No idea how the wound created or No idea there is a wound</label></div>
           </div>
         </div>
@@ -622,13 +623,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
         if(val==='no, skin abnormal') return showQuestion('question1a');
       }
 
-      // Q1a
+       // Q1a
       if(nm==='q1a'){
         if(val==='Prolonged time in bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)') return showQuestion('question2');
-        if(val==='Non- pressure related- e.g. surgical wounds, mechanical fall, diarrhea, incontinence, PAD, PVD, DM ulcer etc.') return showQuestion('question10'); // keep flow identical
+        if(val==='Non- pressure related- e.g. surgical wounds, mechanical fall, PAD, PVD, DM ulcer, cellulitis, laceration etc.') return showQuestion('question12'); // keep flow identical
+        if(val==='Mositure/ Rash related- e.g. incontinence/diarrhea/skin folds/stoma leaking/ drain leaking etc.') return showQuestion('question11');
         if(val==='No idea how the wound created or No idea there is a wound') return showQuestion('question2');
       }
-
 
       // Q2
       if(nm==='q2'){
