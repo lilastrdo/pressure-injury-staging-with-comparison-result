@@ -190,10 +190,10 @@
         <div class="question" id="question1a" style="display:none;">
           <h3>1a. Understand the wound's etiology. Ask the patient or family and check the patient's chart, how did the patient obtain the wound?</h3>
           <div class="options">
-            <div class="option"><input type="radio" name="q1a" value="Prolonged time in bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)" id="q1a-1"><label for="q1a-1">Prolonged time in bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)</label></div>
-            <div class="option"><input type="radio" name="q1a" value="Non- pressure related- e.g. surgical wounds, mechanical fall, PAD, PVD, DM ulcer, cellulitis, laceration etc." id="q1a-2"><label for="q1a-2">Non- pressure related- e.g. surgical wounds, mechanical fall, PAD, PVD, DM ulcer, cellulitis, laceration etc.</label></div>
-            <div class="option"><input type="radio" name="q1a" value="Mositure/ Rash related- e.g. incontinence/diarrhea/skin folds/stoma leaking/ drain leaking etc." id="q1a-3"><label for="q1a-3">Mositure/ Rash related- e.g. incontinence/diarrhea/skin folds/stoma leaking/ drain leaking etc.</label></div>
-            <div class="option"><input type="radio" name="q1a" value="No idea how the wound created or No idea there is a wound" id="q1a-3"><label for="q1a-3">No idea how the wound created or No idea there is a wound</label></div>
+            <div class="option"><input type="radio" name="q1a" value="pressure" id="q1a-1"><label for="q1a-1">Prolonged time in bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)</label></div>
+            <div class="option"><input type="radio" name="q1a" value="nonpressure" id="q1a-2"><label for="q1a-2">Non- pressure related- e.g. surgical wounds, mechanical fall, PAD, PVD, DM ulcer, cellulitis, laceration etc.</label></div>
+            <div class="option"><input type="radio" name="q1a" value="moisture" id="q1a-3"><label for="q1a-3">Moisture related- e.g. incontinence/diarrhea/skin folds/stoma leaking/ wound draining etc.</label></div>
+            <div class="option"><input type="radio" name="q1a" value="unknown" id="q1a-4"><label for="q1a-4">No idea how the wound created or No idea there is a wound</label></div>
           </div>
         </div>
 
@@ -272,7 +272,7 @@
         </div>
 
         <div class="question" id="question10" style="display:none;">
-          <h3>10. Is the wound related to moisture?</h3>
+          <h3>10.Is the wound related to moisture?</h3>
           <div class="options">
             <div class="option"><input type="radio" name="q10" value="yes" id="q10-1"><label for="q10-1">Yes</label></div>
             <div class="option"><input type="radio" name="q10" value="no" id="q10-2"><label for="q10-2">No</label></div>
@@ -357,7 +357,7 @@
 <script>
 /* ----------------------- DATA: interventions (unchanged) ----------------------- */
 const INTERVENTIONS = {
-  stage1:{title:"Stage 1 – Interventions",tags:["Offload","Protect","Assess","Cleanse"],steps:[
+  stage1:{title:"Stage 1 – Interventions",tags:["Offload","Protect"],steps:[
       "*If the Stage 1 is caused by medical device, it is medical related pressure injury (MRPI S1)*",
       "2 RN co-sign on Epic when admission.",
       "Use Rover to capture the wound photo.",
@@ -365,9 +365,10 @@ const INTERVENTIONS = {
       "Offload pressure: use pillows/wedges/Z-Flo pillow for Q2H turns; apply heel-protector boots as appropriate.",
       "Cleanse with Vashe.",
       "Apply appropriate Mepilex foam to redistribute pressure and shear.",
+      "Nursing-driven: consult Nutrition.",
       "Continuously monitor supporting findings (may be present but are not required): Temperature difference (warmer or cooler); Tissue consistency changes (firm or boggy); Sensation changes (pain, tenderness, itching)"
   ]},
-  stage2:{title:"Stage 2 – Interventions",tags:["Offload","Moist wound care","Assess","Consults"],steps:[
+  stage2:{title:"Stage 2 – Interventions",tags:["Offload","Protect", "Nursing Driven: WOCN and Nutrition Consults"],steps:[
       "*If the Stage 2 is caused by medical device, it is medical related pressure injury (MRPI S2)*",
       "2 RN co-sign on Epic when admission.",
       "Use Rover to capture the wound photo.",
@@ -379,7 +380,7 @@ const INTERVENTIONS = {
       "Nursing-driven: consult WOCN.",
       "Nursing-driven: consult Nutrition."
   ]},
-  stage3:{title:"Stage 3 – Interventions",tags:["Offload","Debridement eval","Infection screen","Consults"],steps:[
+  stage3:{title:"Stage 3 – Interventions",tags:["Offload","MD notification PTWC, Debridement eval","Infection screen","Nursing Driven: WOCN and Nutrition Consults"],steps:[
       "*If the Stage 3 is caused by medical device, it is medical related pressure injury (MRPI S3)*",
       "2 RN co-sign on Epic when admission.",
       "Use Rover to capture the wound photo.",
@@ -388,11 +389,12 @@ const INTERVENTIONS = {
       "Cleanse with Vashe.",
       "Apply appropriate Mepilex foam to redistribute pressure and shear.",
       "Contact MD to evaluate and order PTWC consult.",
+      "Nursing-driven: consult WOCN for clean Stage 3 wound.",
       "Nursing-driven: consult Nutrition.",
       "If infection is suspected (malodor, slough, purulence), contact MD for wound swab culture order.",
        "Swab technique: Swab viable tissue only (Do not culture pus, slough or eschar); flush the wound with sterile saline; moisten the swab with NS to improve bacterial adherence; forcefully swab ~1 cm² of viable tissue for ~5 seconds; apply enough pressure to express tissue fluid; send to lab."
   ]},
-  stage4:{title:"Stage 4 – Interventions",tags:["Offload","Advanced care","Infection screen","Consults"],steps:[
+  stage4:{title:"Stage 4 – Interventions",tags:["Offload","MD notification PTWC, Debridement eval","Infection screen","Nursing Driven: Nutrition Consults"],steps:[
       "*If the Stage 4 is caused by medical device, it is medical related pressure injury (MRPI S4)*",
       "2 RN co-sign on Epic when admission.",
       "Use Rover to capture the wound photo.",
@@ -405,7 +407,7 @@ const INTERVENTIONS = {
       "If infection is suspected (malodor, slough, purulence), contact MD for wound swab culture order.",
       "Swab technique: Swab viable tissue only (Do not culture pus, slough or eschar); flush the wound with sterile saline; moisten the swab with NS to improve bacterial adherence; forcefully swab ~1 cm² of viable tissue for ~5 seconds; apply enough pressure to express tissue fluid; send to lab."
   ]},
-  unstageable:{title:"Unstageable – Interventions",tags:["Offload","Do not stage yet","Debridement eval","Consults"],steps:[
+  unstageable:{title:"Unstageable – Interventions",tags:["Offload","MD notification PTWC, Debridement eval","Infection screen","Nursing Driven: Nutrition Consults"],steps:[
       "*If the unstageable is caused by medical device, it is medical related pressure injury (MRPI unstageable)*",
       "2 RN co-sign on Epic when admission.",
       "Use Rover to capture the wound photo.",
@@ -419,7 +421,7 @@ const INTERVENTIONS = {
       "If infection is suspected (malodor, slough, purulence), contact MD for wound swab culture order.",
       "Swab technique: Swab viable tissue only (Do not culture pus, slough or eschar); flush the wound with sterile saline; moisten the swab with NS to improve bacterial adherence; forcefully swab ~1 cm² of viable tissue for ~5 seconds; apply enough pressure to express tissue fluid; send to lab."
   ]},
-  dti:{title:"Deep Tissue Injury (DTI) – Interventions",tags:["Offload","Protect","Monitor closely","Consults"],steps:[
+  dti:{title:"Deep Tissue Injury (DTI) – Interventions",tags:["MD notification PTWC, Debridement eval","Infection screen","Nursing Driven: Nutrition Consults"],steps:[
       "*If the DTI is caused by medical device, it is medical related pressure injury (MRPI DTI)*",
       "2 RN co-sign on Epic when admission.",
       "Use Rover to capture the wound photo.",
@@ -437,14 +439,21 @@ const INTERVENTIONS = {
       "Apply 3M Cavilon Advanced Skin Protectant.",
       "Partial-thickness loss IAD: apply Triad cream.",
       "Intact IAD: apply zinc cream.",
+      "Consider Flexi-Seal for fecal incontinence if medically appropriate.",
       "Consult WOCN for MASD treatment as appropriate."
   ]},
-  masd:{title:"Intertriginous/MASD – Interventions",tags:["Keep folds dry","Antifungal if needed","Protect"],steps:[
+  masd:{title:"MASD – Interventions",
+  tags:["Moisture control","Barrier","Protect","Consult WOCN if necessary"],
+  steps:[
+    "Intertriginous Dermatitis (ITD) Caused by perspiration trapped in skin folds.",
+     "Peristomal Moisture-Associated Dermatitis: Caused by effluent leakage from a stoma.",
+     "Periwound Moisture-Associated Dermatitis: Caused by excess wound exudate contacting surrounding skin.",
      "2 RN co-sign on Epic when admission.",
       "Use Rover to capture the wound photo.",
       "Cleanse with Vashe; dry thoroughly.",
+      "Use 3M Cavilon Advanced Skin Protectant.",
       "Apply InterDry to separate the skin folds.",
-      "Apply antifungal powder to the skin folds.",
+      "Select appropriate absorbent dressing based on drainage: Foam, Alginate, Hydrofiber, Super-absorbent dressings",
       "Consult WOCN for MASD treatment as appropriate."
   ]},
   notpi:{title:"Not a Pressure Injury – Actions",tags:["Different etiology","Document correctly"],steps:[
@@ -625,10 +634,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
        // Q1a
       if(nm==='q1a'){
-        if(val==='Prolonged time in bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)') return showQuestion('question2');
-        if(val==='Non- pressure related- e.g. surgical wounds, mechanical fall, PAD, PVD, DM ulcer, cellulitis, laceration etc.') return showQuestion('question12'); // keep flow identical
-        if(val==='Mositure/ Rash related- e.g. incontinence/diarrhea/skin folds/stoma leaking/ drain leaking etc.') return showQuestion('question11');
-        if(val==='No idea how the wound created or No idea there is a wound') return showQuestion('question2');
+        if(val==='pressure') return showQuestion('question2');
+        if(val==='nonpressure') return showQuestion('question12'); // keep flow identical
+        if(val==='moisture') return showQuestion('question11');
+        if(val==='unknown') return showQuestion('question2');
       }
 
       // Q2
