@@ -190,16 +190,16 @@
         <div class="question" id="question1a" style="display:none;">
           <h3>1a. Understand the wound's etiology. Ask the patient or family and check the patient's chart, how did the patient obtain the wound?</h3>
           <div class="options">
-            <div class="option"><input type="radio" name="q1a" value="Prolonged staying in the bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)" id="q1a-1"><label for="q1a-1">Prolonged staying in the bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)</label></div>
+            <div class="option"><input type="radio" name="q1a" value="Prolonged time in bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)" id="q1a-1"><label for="q1a-1">Prolonged time in bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)</label></div>
             <div class="option"><input type="radio" name="q1a" value="Non- pressure related- e.g. surgical wounds, mechanical fall, diarrhea, incontinence, PAD, PVD, DM ulcer etc." id="q1a-2"><label for="q1a-2">Non- pressure related- e.g. surgical wounds, mechanical fall, diarrhea, incontinence, PAD, PVD, DM ulcer etc</label></div>
             <div class="option"><input type="radio" name="q1a" value="No idea how the wound created or No idea there is a wound" id="q1a-3"><label for="q1a-3">No idea how the wound created or No idea there is a wound</label></div>
           </div>
         </div>
 
         <div class="question" id="question2" style="display:none;">
-          <h3>2. Is the wound/ skin abnormality <br> a) due to prolonged pressure on bony prominence area or shear force (i.e. caused by sliding down in bed/ chair); <br> b)related to medical device?</h3>
+          <h3>2. Is the wound/ skin abnormality <br> a) due to prolonged pressure on bony prominence area (including medical device e.g. SCD; mask; or shear force (i.e. caused by sliding down in bed/ chair); <br> b)related to medical device?</h3>
           <div class="options">
-            <div class="option"><input type="radio" name="q2" value="yes, it is over bony prominence area" id="q2-1"><label for="q2-1">Yes, it is over bony prominence area AND caused by prolonged pressure or shear force</label></div>
+            <div class="option"><input type="radio" name="q2" value="yes, it is over bony prominence area" id="q2-1"><label for="q2-1">Yes, it is caused by prolonged pressure on bony area or shear force</label></div>
             <div class="option"><input type="radio" name="q2" value="yes, it is related to medical device" id="q2-2"><label for="q2-2">Yes, it is related to medical device. Then this is medical device related pressure injury (MDRPI)</label></div>
             <div class="option"><input type="radio" name="q2" value="no" id="q2-3"><label for="q2-3">No, it is neither on bony area nor caused by prolonged pressure or shear force.</label></div>
           </div>
@@ -214,15 +214,15 @@
         </div>
 
         <div class="question" id="question4" style="display:none;">
-          <h3>4. Do you see bone/ tendon structure? i.e. no slough/ eschar blocks the woundbed</h3>
+          <h3>4. Do you see bone/ tendon structure? i.e. no slough/ eschar blocks the wound bed</h3>
           <div class="options">
-            <div class="option"><input type="radio" name="q4" value="yes" id="q4-1"><label for="q4-1">Yes</label></div>
-            <div class="option"><input type="radio" name="q4" value="no" id="q4-2"><label for="q4-2">No</label></div>
+            <div class="option"><input type="radio" name="q4" value="yes" id="q4-1"><label for="q4-1">Yes. Visible wound bed and no slough/ eschar.</label></div>
+            <div class="option"><input type="radio" name="q4" value="no" id="q4-2"><label for="q4-2">No. Slough/ eschar present. Invisible wound bed.</label></div>
           </div>
         </div>
 
         <div class="question" id="question5" style="display:none;">
-          <h3>5. Do you see subcutaneous fat? i.e. no slough/ eschar blocks the woundbed</h3>
+          <h3>5. Do you see subcutaneous fat? i.e. no slough/ eschar blocks the wound bed</h3>
           <div class="options">
             <div class="option"><input type="radio" name="q5" value="yes" id="q5-1"><label for="q5-1">Yes</label></div>
             <div class="option"><input type="radio" name="q5" value="no" id="q5-2"><label for="q5-2">No</label></div>
@@ -266,7 +266,7 @@
           <div class="options">
             <div class="option"><input type="radio" name="q9" value="maroon/ light purple" id="q9-1"><label for="q9-1">maroon/ light purple</label></div>
             <div class="option"><input type="radio" name="q9" value="red" id="q9-2"><label for="q9-2">red</label></div>
-            <div class="option"><input type="radio" name="q9" value="In dark skin tone, its colour may simply differ from the surrounding area e.g. tan/gray" id="q9-3"><label for="q9-3">In dark skin tone, its colour may simply differ from the surrounding area e.g. tan/gray</label></div>
+            <div class="option"><input type="radio" name="q9" value="In dark skin tone, its color may simply differ from the surrounding area e.g. tan/gray" id="q9-3"><label for="q9-3">In dark skin tone, its color may simply differ from the surrounding area e.g. tan/gray</label></div>
           </div>
         </div>
 
@@ -279,7 +279,7 @@
         </div>
 
         <div class="question" id="question11" style="display:none;">
-          <h3>11. Is the wound located at the perineal area?</h3>
+          <h3>11. Is the wound located at the perineal/perigenital area?</h3>
           <div class="options">
             <div class="option"><input type="radio" name="q11" value="yes" id="q11-1"><label for="q11-1">Yes</label></div>
             <div class="option"><input type="radio" name="q11" value="no" id="q11-2"><label for="q11-2">No</label></div>
@@ -357,15 +357,18 @@
 /* ----------------------- DATA: interventions (unchanged) ----------------------- */
 const INTERVENTIONS = {
   stage1:{title:"Stage 1 – Interventions",tags:["Offload","Protect","Assess","Cleanse"],steps:[
-     "2 RN co-sign on Epic when admission.",
+      "*If the Stage 1 is caused by medical device, it is medical related pressure injury (MRPI S1)*",
+      "2 RN co-sign on Epic when admission.",
       "Use Rover to capture the wound photo.",
       "Ask the patient/family when and how the wound was obtained to understand the etiology and to identify any pressure and shear forces applied to the wound; determine if hospital-acquired.",
       "Offload pressure: use pillows/wedges/Z-Flo pillow for Q2H turns; apply heel-protector boots as appropriate.",
       "Cleanse with Vashe.",
-      "Apply appropriate Mepilex foam to redistribute pressure and shear."
+      "Apply appropriate Mepilex foam to redistribute pressure and shear.",
+      "Continuously monitor supporting findings (may be present but are not required): Temperature difference (warmer or cooler); Tissue consistency changes (firm or boggy); Sensation changes (pain, tenderness, itching)"
   ]},
   stage2:{title:"Stage 2 – Interventions",tags:["Offload","Moist wound care","Assess","Consults"],steps:[
-     "2 RN co-sign on Epic when admission.",
+      "*If the Stage 2 is caused by medical device, it is medical related pressure injury (MRPI S2)*",
+      "2 RN co-sign on Epic when admission.",
       "Use Rover to capture the wound photo.",
       "Ask the patient/family when and how the wound was obtained to understand the etiology and to identify any pressure and shear forces applied to the wound; determine if hospital-acquired.",
       "Offload pressure: use pillows/wedges/Z-Flo pillow for Q2H turns; apply heel-protector boots as appropriate.",
@@ -376,7 +379,8 @@ const INTERVENTIONS = {
       "Nursing-driven: consult Nutrition."
   ]},
   stage3:{title:"Stage 3 – Interventions",tags:["Offload","Debridement eval","Infection screen","Consults"],steps:[
-     "2 RN co-sign on Epic when admission.",
+      "*If the Stage 3 is caused by medical device, it is medical related pressure injury (MRPI S3)*",
+      "2 RN co-sign on Epic when admission.",
       "Use Rover to capture the wound photo.",
       "Ask the patient/family when and how the wound was obtained to understand the etiology and to identify any pressure and shear forces applied to the wound; determine if hospital-acquired.",
       "Offload pressure: use pillows/wedges/Z-Flo pillow for Q2H turns; apply heel-protector boots as appropriate.",
@@ -388,7 +392,8 @@ const INTERVENTIONS = {
        "Swab technique: Swab viable tissue only (Do not culture pus, slough or eschar); flush the wound with sterile saline; moisten the swab with NS to improve bacterial adherence; forcefully swab ~1 cm² of viable tissue for ~5 seconds; apply enough pressure to express tissue fluid; send to lab."
   ]},
   stage4:{title:"Stage 4 – Interventions",tags:["Offload","Advanced care","Infection screen","Consults"],steps:[
-    "2 RN co-sign on Epic when admission.",
+      "*If the Stage 4 is caused by medical device, it is medical related pressure injury (MRPI S4)*",
+      "2 RN co-sign on Epic when admission.",
       "Use Rover to capture the wound photo.",
       "Ask the patient/family when and how the wound was obtained to understand the etiology and to identify any pressure and shear forces applied to the wound; determine if hospital-acquired.",
       "Offload pressure: use pillows/wedges/Z-Flo pillow for Q2H turns; apply heel-protector boots as appropriate.",
@@ -400,7 +405,8 @@ const INTERVENTIONS = {
       "Swab technique: Swab viable tissue only (Do not culture pus, slough or eschar); flush the wound with sterile saline; moisten the swab with NS to improve bacterial adherence; forcefully swab ~1 cm² of viable tissue for ~5 seconds; apply enough pressure to express tissue fluid; send to lab."
   ]},
   unstageable:{title:"Unstageable – Interventions",tags:["Offload","Do not stage yet","Debridement eval","Consults"],steps:[
-    "2 RN co-sign on Epic when admission.",
+      "*If the unstageable is caused by medical device, it is medical related pressure injury (MRPI unstageable)*",
+      "2 RN co-sign on Epic when admission.",
       "Use Rover to capture the wound photo.",
       "Ask the patient/family when and how the wound was obtained to understand the etiology and to identify any pressure and shear forces applied to the wound; determine if hospital-acquired.",
       "Offload pressure: use pillows/wedges/Z-Flo pillow for Q2H turns; apply heel-protector boots as appropriate.",
@@ -413,7 +419,8 @@ const INTERVENTIONS = {
       "Swab technique: Swab viable tissue only (Do not culture pus, slough or eschar); flush the wound with sterile saline; moisten the swab with NS to improve bacterial adherence; forcefully swab ~1 cm² of viable tissue for ~5 seconds; apply enough pressure to express tissue fluid; send to lab."
   ]},
   dti:{title:"Deep Tissue Injury (DTI) – Interventions",tags:["Offload","Protect","Monitor closely","Consults"],steps:[
-     "2 RN co-sign on Epic when admission.",
+      "*If the DTI is caused by medical device, it is medical related pressure injury (MRPI DTI)*",
+      "2 RN co-sign on Epic when admission.",
       "Use Rover to capture the wound photo.",
       "Ask the patient/family when and how the wound was obtained to understand the etiology and to identify any pressure/ shear forces applied to the wound; determine if hospital-acquired.",
       "Offload pressure: use pillows/wedges/Z-Flo pillow for Q2H turns; apply heel-protector boots as appropriate.",
@@ -457,19 +464,26 @@ const INTERVENTIONS = {
   steps:[
     "Blanchable erythema: monitor, offload, reassess.",
     "If persists or becomes non-blanchable, consider Stage 1.",
+    "Continuously monitor supporting findings (may be present but are not required): Temperature difference (warmer or cooler); Tissue consistency changes (firm or boggy); Sensation changes (pain, tenderness, itching)",
     "Offload immediately (turn schedule, heel offloading, device repositioning).",
     "Reassess skin within a defined timeframe (e.g., next turn / within 2 hours) and document changes.",
     "If erythema becomes non-blanchable or persists, reassess for Stage 1 and consult WOCN per protocol.",
     "Check Braden score and implement prevention bundle based on risk.",
     "Address contributing factors: moisture, friction/shear, nutrition, device pressure."
-  ]},
-  braden:{title:"No Pressure Injury – Actions",tags:["Prevention","Risk assessment"],steps:[
+  ]
+},
+braden:{
+  title:"No Pressure Injury – Actions",
+  tags:["Prevention","Risk assessment"],
+  steps:[
       "2 RN co-sign on Epic when admission.",
       "If braden score <18 or mobility <2, Use Rover to capture heels, sacral baseline photo.",
       "Document per wound characteristics (e.g., bruise, rash, cellulitis, laceration, venous ulcer, surgical wound).",
       "Follow non-PI protocols and provider/WOCN guidance as indicated.",
-      "Address contributing factors (shear, moisture, device pressure) even if not PI."
-  ]}
+      "Address contributing factors (shear, moisture, device pressure) even if not PI.",
+      "Continuously monitor supporting findings on skin: Temperature difference (warmer or cooler); Tissue consistency changes (firm or boggy); Sensation changes (pain, tenderness, itching)"
+  ]
+}
 };
 
 /* ----------------------- Helpers: progress + steps ----------------------- */
@@ -516,8 +530,8 @@ function classifyKeyFromResultText(txt){
   if (t.includes('not a pi yet') || t.includes('blanchable erythema')) return 'notpiyet';
   if(t.includes('no pressure injury')) return 'braden';
   if (t.includes('it is not pi but') || t.includes('it is not a pi but') || t.includes('not a pi but')) return 'notpi';
-  if (t.includes('chart the wound charateristics') || t.includes('chart the wound characteristics')) return 'notpi';
-  if (t.includes('chart the skin issue charateristics') || t.includes('chart the skin issue characteristics')) return 'notpi';
+  if (t.includes('chart the wound characteristics') || t.includes('chart the wound characteristics')) return 'notpi';
+  if (t.includes('chart the skin issue characteristics') || t.includes('chart the skin issue characteristics')) return 'notpi';
   return null;
 }
 
@@ -610,7 +624,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
       // Q1a
       if(nm==='q1a'){
-        if(val==='Prolonged staying in the bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)') return showQuestion('question2');
+        if(val==='Prolonged time in bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)') return showQuestion('question2');
         if(val==='Non- pressure related- e.g. surgical wounds, mechanical fall, diarrhea, incontinence, PAD, PVD, DM ulcer etc.') return showQuestion('question10'); // keep flow identical
         if(val==='No idea how the wound created or No idea there is a wound') return showQuestion('question2');
       }
@@ -669,7 +683,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
       if(nm==='q9'){
         if(val==='maroon/ light purple') return showResult('maroon/ light purple= Deep Tissue Injury DTI');
         if(val==='red') return showResult('red= Stage 1');
-        if(val==='In dark skin tone, its colour may simply differ from the surrounding area e.g. tan/gray') return showResult('In dark skin tone, its colour may simply differ from the surrounding area e.g. tan/gray= Stage 1');
+        if(val==='In dark skin tone, its color may simply differ from the surrounding area e.g. tan/gray') return showResult('In dark skin tone, its color may simply differ from the surrounding area e.g. tan/gray= Stage 1');
       }
 
       // Q10
