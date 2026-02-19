@@ -188,21 +188,26 @@
         </div>
         
         <div class="question" id="question1a" style="display:none;">
-          <h3>1a. Understand the wound's etiology. Ask the patient or family and check the patient's chart, how did the patient obtain the wound?</h3>
+          <h3>1a. Investigate the wound's etiology.<br>Ask the patient or family and check the patient's chart, how did the patient obtain THE wound?</h3>
           <div class="options">
-            <div class="option"><input type="radio" name="q1a" value="pressure" id="q1a-1"><label for="q1a-1">Prolonged time in bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)</label></div>
-            <div class="option"><input type="radio" name="q1a" value="nonpressure" id="q1a-2"><label for="q1a-2">Non- pressure related- e.g. surgical wounds, mechanical fall, PAD, PVD, DM ulcer, cellulitis, laceration etc.</label></div>
-            <div class="option"><input type="radio" name="q1a" value="moisture" id="q1a-3"><label for="q1a-3">Moisture related- e.g. incontinence/diarrhea/skin folds/stoma leaking/ wound draining etc.</label></div>
-            <div class="option"><input type="radio" name="q1a" value="unknown" id="q1a-4"><label for="q1a-4">No idea how the wound created or No idea there is a wound</label></div>
+            <div class="option"><input type="radio" name="q1a" value="pressure" id="q1a-1"><label for="q1a-1">Immobolization, Prolonged time in bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)</label></div>
+            <div class="option"><input type="radio" name="q1a" value="nonpressure" id="q1a-2"><label for="q1a-2">Non- pressure or shear force related- e.g. surgical wounds, mechanical fall, PAD, PVD, DM ulcer, cellulitis, laceration etc.</label></div>
+            <div class="option"><input type="radio" name="q1a" value="moisture" id="q1a-3"><label for="q1a-3">Moisture related- e.g. incontinence/diarrhea/skin folds/stoma leaking/ wound draining etc</label></div>
+            <div class="option"><input type="radio" name="q1a" value="pressureandmoisture" id="q1a-4"><label for="q1a-4">Prolonged time in bed/ shear force AND Moisture-related</label></div>
+            <div class="option"><input type="radio" name="q1a" value="medicaldevice" id="q1a-5"><label for="q1a-5">Medical device- related (including medical device e.g. SCD, nasal cannula or Bipap etc).</label></div>
+           <div class="option"><input type="radio" name="q1a" value="unknown" id="q1a-6"><label for="q1a-6">No idea how the wound created or No idea there is a wound</label></div>
           </div>
         </div>
 
         <div class="question" id="question2" style="display:none;">
-          <h3>2. Is the wound/ skin abnormality <br> a) due to prolonged pressure on bony prominence area or shear force (i.e. caused by sliding down in bed/ chair); <br> b)related to medical device? (including medical device e.g. SCD, nasal cannula or Bipap etc)</h3>
+          <h3>2. Is the wound/ skin abnormality on bony prominence area (i.e. palpate to assess if the wound is on the bone)?</h3>
           <div class="options">
-            <div class="option"><input type="radio" name="q2" value="yes, it is over bony prominence area" id="q2-1"><label for="q2-1">Yes, it is caused by prolonged pressure on bony area or shear force</label></div>
-            <div class="option"><input type="radio" name="q2" value="yes, it is related to medical device" id="q2-2"><label for="q2-2">Yes, it is related to medical device. Then this is medical device related pressure injury (MDRPI)</label></div>
-            <div class="option"><input type="radio" name="q2" value="no" id="q2-3"><label for="q2-3">No, it is neither on bony area nor caused by prolonged pressure or shear force.</label></div>
+            <div class="option"><input type="radio" name="q2" value="yes" id="q2-1"><label for="q2-1">Yes</label></div>
+            <div class="option"><input type="radio" name="q2" value="no" id="q2-2"><label for="q2-2">No</label></div>
+          <h3>“In incontinent, immobile patients, pressure injuries and IAD may co-exist, even if wounds are close together. Assess each wound separately and note the location carefully.”</h3>
+            <img src="commonpressureinjury.jfif"
+         alt="Body Image"
+         style="width:48%; max-width:480px; height:auto; border-radius:8px;">
           </div>
         </div>
 
@@ -288,10 +293,26 @@
         </div>
 
         <div class="question" id="question12" style="display:none;">
-          <h3>12. Is the non-PI wound open?</h3>
+          <h3>12. Is the wound caused by shear-force?</h3>
           <div class="options">
             <div class="option"><input type="radio" name="q12" value="yes" id="q12-1"><label for="q12-1">Yes</label></div>
             <div class="option"><input type="radio" name="q12" value="no" id="q12-2"><label for="q12-2">No</label></div>
+          </div>
+        </div>
+          
+          <div class="question" id="question13" style="display:none;">
+          <h3>13. Is the non pressure injury wound open?</h3>
+          <div class="options">
+            <div class="option"><input type="radio" name="q13" value="yes" id="q13-1"><label for="q13-1">Yes</label></div>
+            <div class="option"><input type="radio" name="q13" value="no" id="q13-2"><label for="q13-2">No</label></div>
+          </div>
+        </div>
+          
+          <div class="question" id="question14" style="display:none;">
+          <h3>14. Is the IAD showing full-thickness loss?</h3>
+          <div class="options">
+            <div class="option"><input type="radio" name="q14" value="yes" id="q14-1"><label for="q14-1">Yes</label></div>
+            <div class="option"><input type="radio" name="q14" value="no" id="q14-2"><label for="q14-2">No</label></div>
           </div>
         </div>
 
@@ -306,7 +327,7 @@
     flex-wrap:wrap;
     margin-top:8px;
   ">
-    <img src="common_pressure_injury.jfif"
+    <img src="commonpressureinjury.jfif"
          alt="Body Image"
          style="width:48%; max-width:480px; height:auto; border-radius:8px;">
     <img src="commonbuttocksleison.jfif"
@@ -637,13 +658,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
         if(val==='pressure') return showQuestion('question2');
         if(val==='nonpressure') return showQuestion('question12'); // keep flow identical
         if(val==='moisture') return showQuestion('question11');
+        if(val==='pressureandmoisture') return showQuestion('question2');
+        if(val==='medicaldevice') return showQuestion('question3');
         if(val==='unknown') return showQuestion('question2');
       }
 
       // Q2
       if(nm==='q2'){
-        if(val==='yes, it is over bony prominence area') return showQuestion('question3');
-        if(val==='yes, it is related to medical device') return showQuestion('question3'); // keep flow identical
+        if(val==='yes') return showQuestion('question3');
         if(val==='no') return showQuestion('question10');
       }
 
@@ -707,11 +729,23 @@ document.addEventListener('DOMContentLoaded', ()=>{
         if(val==='yes') return showResult('It is not PI but IAD (incontinence associated dermatitis).');
         if(val==='no') return showResult('It is not PI but MASD (moisture associated skin damage).');
       }
-
+      
       // Q12
       if(nm==='q12'){
+        if(val==='yes') return showQuestion('question3');
+        if(val==='no') return showQuestion('question13');
+      }
+      
+      // Q13
+      if(nm==='q13'){
         if(val==='yes') return showResult('It is not PI but a wound which relates to other causes maybe laceration, abrasion, open surgical wound, venous ulcer etc. Chart the wound charateristics.');
-        if(val==='no') return showResult('It is not PI. This abnormal intact skin issue maybe bruise, rash, cellulitis, etc. Chart the skin issue charateristics.');
+        if(val==='no') return showResult('It is not PI. This abnormal intact skin issue maybe bruise, scab, cellulitis, etc. Chart the skin issue charateristics.');
+      }
+      
+      // Q14
+      if(nm==='q14'){
+        if(val==='yes') return showQuestion('question5');
+        if(val==='no') return showResult('It is not PI but IAD (incontinence associated dermatitis).');
       }
     });
   });
