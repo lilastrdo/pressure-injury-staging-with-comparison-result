@@ -190,24 +190,36 @@
         <div class="question" id="question1a" style="display:none;">
           <h3>1a. Investigate the wound's etiology.<br>Ask the patient or family and check the patient's chart, how did the patient obtain THE wound?</h3>
           <div class="options">
-            <div class="option"><input type="radio" name="q1a" value="pressure" id="q1a-1"><label for="q1a-1">Immobolization, Prolonged time in bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)</label></div>
-            <div class="option"><input type="radio" name="q1a" value="nonpressure" id="q1a-2"><label for="q1a-2">Non- pressure or shear force related- e.g. surgical wounds, mechanical fall, PAD, PVD, DM ulcer, cellulitis, laceration etc.</label></div>
+            <div class="option"><input type="radio" name="q1a" value="pressure" id="q1a-1"><label for="q1a-1">Immobolization- prolonged time in bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)</label></div>
+            <div class="option"><input type="radio" name="q1a" value="nonpressure" id="q1a-2"><label for="q1a-2">Non-pressure or shear force related- e.g. surgical wounds, mechanical fall, PAD, PVD, DM ulcer, cellulitis, laceration etc.</label></div>
             <div class="option"><input type="radio" name="q1a" value="moisture" id="q1a-3"><label for="q1a-3">Moisture related- e.g. incontinence/diarrhea/skin folds/stoma leaking/ wound draining etc</label></div>
-            <div class="option"><input type="radio" name="q1a" value="pressureandmoisture" id="q1a-4"><label for="q1a-4">Prolonged time in bed/ shear force AND Moisture-related</label></div>
+            <div class="option"><input type="radio" name="q1a" value="pressureandmoisture" id="q1a-4"><label for="q1a-4"> BOTH- Immobolization/ shear force AND Moisture-related</label></div>
             <div class="option"><input type="radio" name="q1a" value="medicaldevice" id="q1a-5"><label for="q1a-5">Medical device- related (including medical device e.g. SCD, nasal cannula or Bipap etc).</label></div>
            <div class="option"><input type="radio" name="q1a" value="unknown" id="q1a-6"><label for="q1a-6">No idea how the wound created or No idea there is a wound</label></div>
           </div>
         </div>
+        
+        <div class="question" id="question1b" style="display:none;">
+        <h3>1b. Assess wound depth and characteristics. What does the wound look like?</h3>
+        <h3>“In incontinent, immobile patients, pressure injuries and IAD may co-exist, even if wounds are close together. Assess and document each wound SEPARATELY, noting location carefully.”</h3>
+            <img src="iadvspi.png"
+         alt="Body Image"
+         style="width:100%; max-width:900px; height:auto; border-radius:8px;">
+          <div class="options">
+            <div class="option"><input type="radio" name="q1b" value="Superficial" id="q1b-1"><label for="q1b-1">Superficial / diffuse / irregular borders / macerated =Incontinence Associated Damage</label></div>
+            <div class="option"><input type="radio" name="q1b" value="Focal" id="q1b-2"><label for="q1b-2">Focal / well-defined / full-thickness / circular / deep= Pressure injury</label></div>
+          </div>
+        </div>
 
         <div class="question" id="question2" style="display:none;">
-          <h3>2. Is the wound/ skin abnormality on bony prominence area (i.e. palpate to assess if the wound is on the bone)?</h3>
+          <h3>2. Is the wound/ skin abnormality on bony prominence area (i.e. palpate to assess if the wound is on the bone) AND PRESSURE/ SHEAR FORCE is present?</h3>
           <div class="options">
             <div class="option"><input type="radio" name="q2" value="yes" id="q2-1"><label for="q2-1">Yes</label></div>
             <div class="option"><input type="radio" name="q2" value="no" id="q2-2"><label for="q2-2">No</label></div>
-          <h3>“In incontinent, immobile patients, pressure injuries and IAD may co-exist, even if wounds are close together. Assess each wound separately and note the location carefully.”</h3>
+          <h3>In incontinent, immobile patients, pressure injuries and IAD may co-exist, even if wounds are close together. Assess and document each wound SEPARATELY, noting location carefully.</h3>
             <img src="commonpressureinjury.jfif"
          alt="Body Image"
-         style="width:48%; max-width:480px; height:auto; border-radius:8px;">
+         style="width:70%; max-width:480px; height:auto; border-radius:8px;">
           </div>
         </div>
 
@@ -520,9 +532,9 @@ braden:{
 /* ----------------------- Helpers: progress + steps ----------------------- */
 const stepIndicators = document.querySelectorAll('.step');
 const questionsOrder = [
-  'question0','question1','question1a','question2','question3','question4',
+  'question0','question1','question1a', 'question1b','question2','question3','question4',
   'question5','question5a','question6','question7','question8','question9',
-  'question10','question11','question12'
+  'question10','question11','question12','question13','question14'
 ];
 let currentIndex = 0;
 
@@ -658,11 +670,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
         if(val==='pressure') return showQuestion('question2');
         if(val==='nonpressure') return showQuestion('question12'); // keep flow identical
         if(val==='moisture') return showQuestion('question11');
-        if(val==='pressureandmoisture') return showQuestion('question2');
+        if(val==='pressureandmoisture') return showQuestion('question1b');
         if(val==='medicaldevice') return showQuestion('question3');
         if(val==='unknown') return showQuestion('question2');
       }
 
+      // Q1b
+      if(nm==='q1b'){
+        if(val==='Superficial') return showQuestion('question3');
+        if(val==='Focal') return showQuestion('question2');
+      }
+      
       // Q2
       if(nm==='q2'){
         if(val==='yes') return showQuestion('question3');
