@@ -123,6 +123,18 @@
     a::after{content:" (" attr(href) ")";font-size:10px}
   }
   
+  /* 🔴 Anatomical location required state */
+.siteNumberInput.required-site {
+  border: 2px solid #ef4444 !important;
+  background-color: #fef2f2 !important;
+}
+
+/* 🟢 Once locked / valid */
+.siteNumberInput.site-valid {
+  border: 2px solid #10b981 !important;
+  background-color: #f0fdf4 !important;
+}
+  
 </style>
 </head>
 <body>
@@ -177,10 +189,10 @@
             <div class="option"><input type="radio" name="q0" value="I have no idea" id="q0-12"><label for="q0-12">I have no idea</label></div>
           </div>
         </div>
-
+        
         <div class="question" id="question1" style="display:none;">
-          <h3>1. Is the skin/ mucosal membrane normal?</h3>
           <div class="options">
+          <h3>1. Is the skin/ mucosal membrane normal?</h3>
             <div class="option"><input type="radio" name="q1" value="yes" id="q1-1"><label for="q1-1">Yes</label></div>
             <div class="option"><input type="radio" name="q1" value="no, mucosal membrane abnormal" id="q1-2"><label for="q1-2">No, mucosal membrane abnormal</label></div>
             <div class="option"><input type="radio" name="q1" value="no, skin abnormal" id="q1-3"><label for="q1-3">No, skin abnormal</label></div>
@@ -190,7 +202,7 @@
         <div class="question" id="question1a" style="display:none;">
           <h3>1a. Investigate the wound's etiology.<br>Ask the patient or family and check the patient's chart, how did the patient obtain THE wound?</h3>
           <div class="options">
-            <div class="option"><input type="radio" name="q1a" value="pressure" id="q1a-1"><label for="q1a-1">Immobolization- prolonged time in bed and/or related to shear force (i.e. caused by sliding down in bed/ chair)</label></div>
+            <div class="option"><input type="radio" name="q1a" value="pressure" id="q1a-1"><label for="q1a-1">Pressure/ Shear force related-Immobolization/ caused by sliding down in bed/ chair)</label></div>
             <div class="option"><input type="radio" name="q1a" value="nonpressure" id="q1a-2"><label for="q1a-2">Non-pressure or shear force related- e.g. surgical wounds, mechanical fall, PAD, PVD, DM ulcer, cellulitis, laceration etc.</label></div>
             <div class="option"><input type="radio" name="q1a" value="moisture" id="q1a-3"><label for="q1a-3">Moisture related- e.g. incontinence/diarrhea/skin folds/stoma leaking/ wound draining etc</label></div>
             <div class="option"><input type="radio" name="q1a" value="pressureandmoisture" id="q1a-4"><label for="q1a-4"> BOTH- Immobolization/ shear force AND Moisture-related</label></div>
@@ -202,7 +214,28 @@
         <div class="question" id="question1b" style="display:none;">
         <h3>1b. Assess wound depth and characteristics. What does the wound look like?</h3>
         <h3>“In incontinent, immobile patients, pressure injuries and IAD may co-exist, even if wounds are close together. Assess and document each wound SEPARATELY, noting location carefully.”</h3>
-            <img src="iadvspi.png"
+              <div style="margin-top:12px;">
+        <label style="font-weight:600;">Anatomical Location Number:</label>
+        <input 
+        type="number" 
+        class="siteNumberInput" 
+        min="1" 
+        max="30" 
+       placeholder="Enter number (1–30)"
+       style="width:140px;padding:8px;border-radius:8px;border:1px solid #e2e8f0;margin-left:8px;">
+       <button type="button" class="btn btn-ghost lockSiteBtn" style="margin-left:8px;">
+    Lock Location
+  </button>
+        <span class="siteNumberDisplay" style="margin-left:10px;font-weight:600;color:#2563eb;"></span>
+        <span class="siteLockMsg" style="margin-left:10px;font-size:.85rem;color:#ef4444;"></span>
+       </div>
+        <img src="commonpressureinjury.jfif"
+         alt="Body Image"
+         style="width:50%; max-width:480px; height:auto; border-radius:8px;">
+         <img src="commonbuttocksleison.png"
+         alt="Body Image"
+         style="width:50%; max-width:480px; height:auto; border-radius:8px;">
+              <img src="iadvspi.png"
          alt="Body Image"
          style="width:100%; max-width:900px; height:auto; border-radius:8px;">
           <div class="options">
@@ -213,15 +246,34 @@
 
         <div class="question" id="question2" style="display:none;">
           <h3>2. Is the wound/ skin abnormality on bony prominence area (i.e. palpate to assess if the wound is on the bone) AND PRESSURE/ SHEAR FORCE is present?</h3>
-          <div class="options">
-            <div class="option"><input type="radio" name="q2" value="yes" id="q2-1"><label for="q2-1">Yes</label></div>
-            <div class="option"><input type="radio" name="q2" value="no" id="q2-2"><label for="q2-2">No</label></div>
-          <h3>In incontinent, immobile patients, pressure injuries and IAD may co-exist, even if wounds are close together. Assess and document each wound SEPARATELY, noting location carefully.</h3>
-            <img src="commonpressureinjury.jfif"
+          <h3>“In incontinent, immobile patients, pressure injuries and IAD may co-exist, even if wounds are close together. Assess and document each wound SEPARATELY, noting location carefully.”</h3>
+              <div style="margin-top:12px;">
+        <label style="font-weight:600;">Anatomical Location Number:</label>
+        <input 
+        type="number" 
+        class="siteNumberInput" 
+        min="1" 
+        max="30" 
+       placeholder="Enter number (1–30)"
+       style="width:140px;padding:8px;border-radius:8px;border:1px solid #e2e8f0;margin-left:8px;"
+       >
+       <button type="button" class="btn btn-ghost lockSiteBtn" style="margin-left:8px;">
+    Lock Location
+  </button>
+        <span class="siteNumberDisplay" style="margin-left:10px;font-weight:600;color:#2563eb;"></span>
+        <span class="siteLockMsg" style="margin-left:10px;font-size:.85rem;color:#ef4444;"></span>
+       </div>
+        <img src="commonpressureinjury.jfif"
          alt="Body Image"
-         style="width:70%; max-width:480px; height:auto; border-radius:8px;">
-          </div>
-        </div>
+         style="width:50%; max-width:480px; height:auto; border-radius:8px;">
+         <img src="commonbuttocksleison.png"
+         alt="Body Image"
+         style="width:50%; max-width:480px; height:auto; border-radius:8px;">
+          <div class="options">
+       <div class="option"><input type="radio" name="q2" value="yes" id="q2-1"><label for="q2-1">Yes</label></div>
+       <div class="option"><input type="radio" name="q2" value="no" id="q2-2"><label for="q2-2">No</label></div>
+</div>
+       </div>
 
         <div class="question" id="question3" style="display:none;">
           <h3>3. Is it an open wound?</h3>
@@ -290,6 +342,29 @@
 
         <div class="question" id="question10" style="display:none;">
           <h3>10.Is the wound related to moisture?</h3>
+          <h3>“In incontinent, immobile patients, pressure injuries and IAD may co-exist, even if wounds are close together. Assess and document each wound SEPARATELY, noting location carefully.”</h3>
+              <div style="margin-top:12px;">
+        <label style="font-weight:600;">Anatomical Location Number:</label>
+        <input 
+        type="number" 
+        class="siteNumberInput" 
+        min="1" 
+        max="30" 
+       placeholder="Enter number (1–30)"
+       style="width:140px;padding:8px;border-radius:8px;border:1px solid #e2e8f0;margin-left:8px;"
+       >
+       <button type="button" class="btn btn-ghost lockSiteBtn" style="margin-left:8px;">
+    Lock Location
+  </button>
+        <span class="siteNumberDisplay" style="margin-left:10px;font-weight:600;color:#2563eb;"></span>
+        <span class="siteLockMsg" style="margin-left:10px;font-size:.85rem;color:#ef4444;"></span>
+       </div>
+        <img src="commonpressureinjury.jfif"
+         alt="Body Image"
+         style="width:50%; max-width:480px; height:auto; border-radius:8px;">
+         <img src="commonbuttocksleison.png"
+         alt="Body Image"
+         style="width:50%; max-width:480px; height:auto; border-radius:8px;">
           <div class="options">
             <div class="option"><input type="radio" name="q10" value="yes" id="q10-1"><label for="q10-1">Yes</label></div>
             <div class="option"><input type="radio" name="q10" value="no" id="q10-2"><label for="q10-2">No</label></div>
@@ -298,6 +373,28 @@
 
         <div class="question" id="question11" style="display:none;">
           <h3>11. Is the wound located at the perineal/perigenital area?</h3>
+          <h3>“In incontinent, immobile patients, pressure injuries and IAD may co-exist, even if wounds are close together. Assess and document each wound SEPARATELY, noting location carefully.”</h3>
+              <div style="margin-top:12px;">
+        <label style="font-weight:600;">Anatomical Location Number:</label>
+        <input 
+        type="number" 
+        class="siteNumberInput" 
+        min="1" 
+        max="30" 
+       placeholder="Enter number (1–30)"
+       style="width:140px;padding:8px;border-radius:8px;border:1px solid #e2e8f0;margin-left:8px;"
+       >
+       <button type="button" class="btn btn-ghost lockSiteBtn" style="margin-left:8px;">
+    Lock Location
+  </button>
+        <span class="siteNumberDisplay" style="margin-left:10px;font-weight:600;color:#2563eb;"></span>
+       </div>
+        <img src="commonpressureinjury.jfif"
+         alt="Body Image"
+         style="width:50%; max-width:480px; height:auto; border-radius:8px;">
+         <img src="commonbuttocksleison.png"
+         alt="Body Image"
+         style="width:50%; max-width:480px; height:auto; border-radius:8px;">
           <div class="options">
             <div class="option"><input type="radio" name="q11" value="yes" id="q11-1"><label for="q11-1">Yes</label></div>
             <div class="option"><input type="radio" name="q11" value="no" id="q11-2"><label for="q11-2">No</label></div>
@@ -342,7 +439,7 @@
     <img src="commonpressureinjury.jfif"
          alt="Body Image"
          style="width:48%; max-width:480px; height:auto; border-radius:8px;">
-    <img src="commonbuttocksleison.jfif"
+    <img src="commonbuttocksleison.png"
          alt="Body Image"
          style="width:48%; max-width:480px; height:auto; border-radius:8px;">
   </div>
@@ -351,6 +448,7 @@
   <div class="result-container">
     <div class="result-title">Staging Result</div>
     <p id="resultText"></p>
+    <p id="siteResult" style="margin-top:10px; font-weight:600; color:#2563eb;"></p>
 
     <div class="comparison-container" id="comparisonContainer" style="display:none;">
       <div class="comparison-title">Comparison Result</div>
@@ -388,6 +486,114 @@
   </div>
 
 <script>
+  let selectedSite = "";
+  const SITE_MAP = {
+  1:"Forehead",
+  2:"Cheeks",
+  3:"Ears",
+  4:"Nose (NIV)",
+  5:"Lips/Chin",
+  6:"Occiput",
+  7:"Thoracic area (ribs)",
+  8:"Anterior iliac crest",
+  9:"Trochanter (hip)",
+  10:"Lateral knee & patella",
+  11:"Lateral malleolus",
+  12:"Toes",
+  13:"Shoulder",
+  14:"Scapula",
+  15:"Spinal column",
+  16:"Elbow",
+  17:"Sacrum/Coccyx",
+  18:"Buttocks",
+  19:"Medial knee",
+  20:"Medial malleolus",
+  21:"Heel",
+  // Buttocks Lesion Image
+  22:"Sacrum",
+  23:"Coccyx",
+  24:"Intergluteal cleft",
+  25:"Perianal area",
+  26:"Sacral iliac crest",
+  27:"Buttocks",
+  28:"Ischial tuberosity",
+  29:"Posterior thigh",
+  30:"Trochanter"
+};
+
+let lockedSiteNum = null;      // the ONE official site number
+let lockedSiteLabel = "";      // e.g., "Buttocks (18)"
+
+function updateAllSiteInputs() {
+  document.querySelectorAll('.siteNumberInput').forEach((inp) => {
+    if (lockedSiteNum !== null) {
+      inp.value = lockedSiteNum;
+      inp.setAttribute('readonly', 'readonly');     // lock future edits
+      inp.style.background = '#f8fafc';
+    } else {
+      inp.removeAttribute('readonly');
+      inp.style.background = '#fff';
+    }
+
+    const display = inp.parentElement.querySelector('.siteNumberDisplay');
+    if (display) display.textContent = lockedSiteLabel || "";
+    
+    const msg = inp.parentElement.querySelector('.siteLockMsg');
+if (msg) msg.textContent = (lockedSiteNum !== null) ? `Locked to ${lockedSiteLabel}.` : "";
+  });
+}
+
+function bindLockedSiteInputs() {
+  document.querySelectorAll('.siteNumberInput').forEach((inp) => {
+    if (inp.dataset.bound === "1") return;
+    inp.dataset.bound = "1";
+
+    inp.addEventListener('input', () => {
+      const msg = inp.parentElement.querySelector('.siteLockMsg');
+      const display = inp.parentElement.querySelector('.siteNumberDisplay');
+      const num = parseInt(inp.value, 10);
+
+      // if already locked, keep it locked and ignore typing
+      if (lockedSiteNum !== null) {
+        inp.value = lockedSiteNum;
+        if (display) display.textContent = lockedSiteLabel;
+        if (msg) msg.textContent = `Locked to ${lockedSiteLabel}.`;
+        return;
+      }
+
+      // empty
+      if (inp.value.trim() === "") {
+        if (display) display.textContent = "";
+        if (msg) msg.textContent = "";
+        return;
+      }
+
+      // invalid
+      if (!SITE_MAP[num]) {
+        if (display) display.textContent = "";
+        if (msg) msg.textContent = "Enter a valid number (1–30).";
+        return;
+      }
+
+      // valid BUT not locked yet -> just show preview text
+      if (display) display.textContent = `${SITE_MAP[num]} (${num})`;
+      if (msg) msg.textContent = "";
+    });
+  });
+}
+
+function updateSiteVisualState() {
+  document.querySelectorAll('.siteNumberInput').forEach(inp => {
+    if (lockedSiteNum === null) {
+      inp.classList.add('required-site');
+      inp.classList.remove('site-valid');
+    } else {
+      inp.classList.remove('required-site');
+      inp.classList.add('site-valid');
+    }
+  });
+}
+
 /* ----------------------- DATA: interventions (unchanged) ----------------------- */
 const INTERVENTIONS = {
   stage1:{title:"Stage 1 – Interventions",tags:["Offload","Protect"],steps:[
@@ -602,7 +808,8 @@ async function copyCurrentList(targetBtn){
   const title = ivTitle.textContent || 'Interventions';
   const idText = pid.value ? `Identifier: ${pid.value}\n` : '';
   const steps = [...ivSteps.querySelectorAll('li')].map((li,i)=>`${i+1}. ${li.textContent}`).join('\n');
-  const blob = `${title}\n${idText}\n${steps}\n\n(Guide: follow facility policy, WOCN guidance, and provider orders.)`;
+  const siteText = selectedSite ? `Location: ${selectedSite}\n` : '';
+  const blob = `${title}\n${idText}\n${siteText}\n${steps}\n\n(Guide: follow facility policy, WOCN guidance, and provider orders.)`;
   try{
     await navigator.clipboard.writeText(blob);
     targetBtn.textContent = 'Copied ✓';
@@ -626,6 +833,13 @@ function showResult(resultText){
   document.getElementById('comparisonContainer').style.display='block';
   document.getElementById('initialValue').textContent = initialAssessment || 'Not specified';
   document.getElementById('finalValue').textContent = resultText;
+  
+ const siteResult = document.getElementById('siteResult');
+if (siteResult) {
+  siteResult.textContent = lockedSiteLabel
+    ? `Anatomical Location: ${lockedSiteLabel}`
+    : '';
+}
 
   // progress/steps
   currentIndex = questionsOrder.length; updateProgress(); updateSteps();
@@ -644,9 +858,41 @@ function showResult(resultText){
     try{ await fetch(ENDPOINT,{method:'POST',body:form,mode:'no-cors'});}catch(e){}
   })(initialAssessment, resultText);
 }
-
 /* ----------------------- Branching: EXACTLY like index.html ----------------------- */
 document.addEventListener('DOMContentLoaded', ()=>{
+  // 🔐 Lock anatomical location inputs
+  bindLockedSiteInputs();
+  updateAllSiteInputs();
+  updateSiteVisualState();
+  
+  document.querySelectorAll('.lockSiteBtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const container = btn.parentElement;
+    const inp = container.querySelector('.siteNumberInput');
+    const msg = container.querySelector('.siteLockMsg');
+    const display = container.querySelector('.siteNumberDisplay');
+
+    const num = parseInt(inp.value, 10);
+
+    // validate first
+    if (!SITE_MAP[num]) {
+      if (display) display.textContent = "";
+      if (msg) msg.textContent = "Enter a valid number (1–30) first.";
+      return;
+    }
+
+    // lock globally
+    lockedSiteNum = num;
+    lockedSiteLabel = `${SITE_MAP[num]} (${num})`;
+    selectedSite = lockedSiteLabel;
+
+    // clear message + show locked value
+    if (msg) msg.textContent = `Locked to ${lockedSiteLabel}.`;
+
+    updateAllSiteInputs();
+  });
+});
+  
   // init
   updateProgress(); updateSteps();
 
@@ -660,9 +906,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
       // Q1
       if(nm==='q1'){
-        if(val==='yes') return showResult('There is no Pressure Injury. Perform Braden Score.');
-        if(val==='no, mucosal membrane abnormal') return showResult('Understand how the patient obtained this mucosal membrane sore. If it is related to medical device (e.g. ETT, dobhoff, NGT etc), this is named as mucosal membrane pressure injury. However, these pressure injuries cannot be staged.');
-        if(val==='no, skin abnormal') return showQuestion('question1a');
+      if(val === 'yes') return showResult('There is no Pressure Injury. Perform Braden Score.');
+      if(val==='no, mucosal membrane abnormal') return showResult('Understand how the patient obtained this mucosal membrane sore. If it is related to medical device (e.g. ETT, dobhoff, NGT etc), this is named as mucosal membrane pressure injury. However, these pressure injuries cannot be staged.');
+      if(val==='no, skin abnormal') return showQuestion('question1a');
       }
 
        // Q1a
@@ -677,7 +923,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
       // Q1b
       if(nm==='q1b'){
-        if(val==='Superficial') return showQuestion('question3');
+        if(val==='Superficial') return showQuestion('question10');
         if(val==='Focal') return showQuestion('question2');
       }
       
