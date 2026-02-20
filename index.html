@@ -167,7 +167,7 @@
 }
 
 .img-small{
-  width:49%;
+  width:60%;
   max-width:420px;
   height:auto;
   border-radius:8px;
@@ -249,11 +249,11 @@
         <div class="question" id="question1a" style="display:none;">
           <h3>1a. Investigate the wound's etiology.<br>Ask the patient or family and check the patient's chart, how did the patient obtain THE wound?</h3>
           <div class="options">
-            <div class="option"><input type="radio" name="q1a" value="pressure" id="q1a-1"><label for="q1a-1">Pressure/ Shear force related-Immobolization/ caused by sliding down in bed/ chair)</label></div>
+            <div class="option"><input type="radio" name="q1a" value="pressure" id="q1a-1"><label for="q1a-1">Pressure/ Shear force related-Immobolization/ caused by sliding down in bed/ chair</label></div>
             <div class="option"><input type="radio" name="q1a" value="nonpressure" id="q1a-2"><label for="q1a-2">Non-pressure or shear force related- e.g. surgical wounds, mechanical fall, PAD, PVD, DM ulcer, cellulitis, laceration etc.</label></div>
             <div class="option"><input type="radio" name="q1a" value="moisture" id="q1a-3"><label for="q1a-3">Moisture related- e.g. incontinence/diarrhea/skin folds/stoma leaking/ wound draining etc</label></div>
             <div class="option"><input type="radio" name="q1a" value="pressureandmoisture" id="q1a-4"><label for="q1a-4"> BOTH- Immobolization/ shear force AND Moisture-related</label></div>
-            <div class="option"><input type="radio" name="q1a" value="medicaldevice" id="q1a-5"><label for="q1a-5">Medical device- related (including medical device e.g. SCD, nasal cannula or Bipap etc).</label></div>
+            <div class="option"><input type="radio" name="q1a" value="medicaldevice" id="q1a-5"><label for="q1a-5">Medical device- related including medical device e.g. SCD, nasal cannula or Bipap etc.</label></div>
            <div class="option"><input type="radio" name="q1a" value="unknown" id="q1a-6"><label for="q1a-6">No idea how the wound created or No idea there is a wound</label></div>
           </div>
         </div>
@@ -294,7 +294,7 @@
         </div>
 
         <div class="question" id="question2" style="display:none;">
-          <h3>2.Palpate the wound and assess for pressure or shear.
+          <h3>2.Palpate the wound and identify for any pressure or shear force.
                 Shear example: sliding down in bed/chair.</h3>
           <p class="clinical-remark">
   In incontinent and immobile patients, pressure injuries and IAD may co-exist—even when wounds are close together. Assess and document each wound separately, carefully noting the anatomical location.
@@ -322,7 +322,7 @@
           <div class="options">
        <div class="option"><input type="radio" name="q2" value="both" id="q2-1"><label for="q2-1">Yes. BOTH bony area And Pressure/Shear force are identified.</label></div>
        <div class="option"><input type="radio" name="q2" value="neither" id="q2-2"><label for="q2-2">No. Neither on bony area Nor Pressure/Shear force are identified.</label></div>
-       <div class="option"><input type="radio" name="q2" value="bony" id="q2-3"><label for="q2-3">ONLY BONY. No Pressure/Shear force are identified.</label></div>
+       <div class="option"><input type="radio" name="q2" value="bony" id="q2-3"><label for="q2-3">ONLY BONY AREA is identified. No Pressure/Shear force.</label></div>
        <div class="option"><input type="radio" name="q2" value="bony" id="q2-4"><label for="q2-4">ONLY PRESSURE/SHEAR FORCE is identified. Not on bony area.</label></div>
 </div>
        </div>
@@ -336,7 +336,7 @@
         </div>
 
         <div class="question" id="question4" style="display:none;">
-          <h3>4. Do you see bone/ tendon structure?</h3>
+          <h3>4. Do you see muscle/ bone/ tendon structure?</h3>
           <div class="options">
             <div class="option"><input type="radio" name="q4" value="yes" id="q4-1"><label for="q4-1">Yes.</label></div>
             <div class="option"><input type="radio" name="q4" value="no" id="q4-2"><label for="q4-2">No.</label></div>
@@ -572,37 +572,37 @@
 <script>
   let selectedSite = "";
   const SITE_MAP = {
-  1:"Forehead",
-  2:"Cheeks",
-  3:"Ears",
-  4:"Nose (NIV)",
-  5:"Lips/Chin",
-  6:"Occiput",
-  7:"Thoracic area (ribs)",
-  8:"Anterior iliac crest",
-  9:"Trochanter (hip)",
-  10:"Lateral knee & patella",
-  11:"Lateral malleolus",
-  12:"Toes",
-  13:"Shoulder",
-  14:"Scapula",
-  15:"Spinal column",
-  16:"Elbow",
-  17:"Sacrum/Coccyx",
+  1:"Forehead-bony area",
+  2:"Cheeks-bony area",
+  3:"Ears-bony area",
+  4:"Nose-bony area",
+  5:"Lips/Chin-bony area",
+  6:"Occiput-bony area",
+  7:"Thoracic area (ribs)-bony area",
+  8:"Anterior iliac crest-bony area",
+  9:"Trochanter (hip)-bony area",
+  10:"Lateral knee & patella-bony area",
+  11:"Lateral malleolus-bony area",
+  12:"Toes-bony area",
+  13:"Shoulder-bony area",
+  14:"Scapula-bony area",
+  15:"Spinal column-bony area",
+  16:"Elbow-bony area",
+  17:"Sacrum/Coccyx-bony area",
   18:"Buttocks",
-  19:"Medial knee",
-  20:"Medial malleolus (Ankle)",
-  21:"Heel",
+  19:"Medial knee-bony area",
+  20:"Ankle-bony area",
+  21:"Heel-bony area",
   // Buttocks Lesion Image
-  22:"Sacrum",
-  23:"Coccyx",
+  22:"Sacrum-bony area",
+  23:"Coccyx-bony area",
   24:"Intergluteal cleft",
   25:"Perianal area",
-  26:"Sacral iliac crest",
+  26:"Sacral iliac crest-bony area",
   27:"Buttocks",
-  28:"Ischial tuberosity",
+  28:"Ischial tuberosity-bony area",
   29:"Posterior thigh",
-  30:"Trochanter"
+  30:"Trochanter-bony area"
 };
 
 let lockedSiteNum = null;      // the ONE official site number
@@ -1058,7 +1058,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
       // Q7
       if(nm==='q7'){
         if(val==='Serum filled i.e. Clear filled') return showResult('It is Stage 2 PI. (Serum-filled blister)');
-        if(val==='Blood filled i.e. maroon filled. Or the presence of mushy/ boggy skin in darker skin tone') return showResult('Blood filled i.e. maroon filled. Or the presence of mushy/ boggy skin in darker skin tone= Deep Tissue Injury DTI');
+        if(val==='Blood filled i.e. maroon filled. Or the presence of mushy/ boggy skin in darker skin tone') return showResult('Deep Tissue Injury DTI');
       }
 
       // Q8
@@ -1095,7 +1095,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
       // Q13
       if(nm==='q13'){
         if(val==='yes') return showResult('It is not PI but a wound which relates to other causes maybe laceration, abrasion, open surgical wound, venous ulcer etc. Chart the wound charateristics.');
-        if(val==='no') return showResult('It is not PI. This abnormal intact skin issue maybe bruise, scab, cellulitis, etc. Chart the skin issue charateristics.');
+        if(val==='no') return showResult('It is not PI but chart the skin issue charateristics.');
       }
       
       // Q14
