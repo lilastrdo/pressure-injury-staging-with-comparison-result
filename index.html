@@ -104,17 +104,40 @@
     .header h1{font-size:1.4rem;line-height:1.3;}
     .option label{font-size:.95rem;}
     .tools{justify-content:center;}
-    img{
-      max-width:100%!important;
+    
+    .img-row{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  gap:14px;
+  flex-wrap:wrap;
+}
+    .img-wide{
       width:100%!important;
+      max-width:100%!important;
       height:auto!important;
     }
+    .img-small{
+    width:49% !important;
+    max-width:220px !important;
+    height:auto !important;
+  }
+    
     #result div[style*="display:flex"]{
       flex-direction:column;
       align-items:center;
       gap:6px;
     }
   }
+  
+  /* Clinical guidance remark */
+.clinical-remark{
+  font-size: 0.85rem;
+  color: #64748b;
+  font-style: italic;
+  margin-top: 6px;
+  line-height: 1.4;
+}
 
   @media print{
     .header,.question-navigation,.tools,.hint{display:none}
@@ -134,6 +157,30 @@
   border: 2px solid #10b981 !important;
   background-color: #f0fdf4 !important;
 }
+
+.img-row{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  gap:14px;
+  flex-wrap:nowrap;              /* keeps 2 images on same row */
+}
+
+.img-small{
+  width:49%;
+  max-width:420px;
+  height:auto;
+  border-radius:8px;
+}
+
+.img-wide{
+  width:90%;
+  max-width:700px;
+  height:auto;
+  border-radius:8px;
+}
+
+
   
 </style>
 </head>
@@ -173,7 +220,7 @@
 
         <!-- Questions -->
         <div class="question active" id="question0">
-          <h3>0. What type of pressure injury do you think your wound is?</h3>
+          <h3>0. Before using the tool, what type of pressure injury do you think this wound is?</h3>
           <div class="options">
             <div class="option"><input type="radio" name="q0" value="PI Stage 1" id="q0-1"><label for="q0-1">PI Stage 1</label></div>
             <div class="option"><input type="radio" name="q0" value="PI Stage 2" id="q0-2"><label for="q0-2">PI Stage 2</label></div>
@@ -212,8 +259,10 @@
         </div>
         
         <div class="question" id="question1b" style="display:none;">
-        <h3>1b. Assess wound depth and characteristics. What does the wound look like?</h3>
-        <h3>“In incontinent, immobile patients, pressure injuries and IAD may co-exist, even if wounds are close together. Assess and document each wound SEPARATELY, noting location carefully.”</h3>
+        <h3>1b. BOTH incontinent and immmobile patients,  pressure injuries and IAD may co-exist—even when wounds are close together. What does the wound look like?</h3>
+        <p class="clinical-remark">
+  Assess and document each wound separately if necessarily and carefully noting the anatomical location.
+</p>
               <div style="margin-top:12px;">
         <label style="font-weight:600;">Anatomical Location Number:</label>
         <input 
@@ -224,29 +273,32 @@
        placeholder="Enter number (1–30)"
        style="width:140px;padding:8px;border-radius:8px;border:1px solid #e2e8f0;margin-left:8px;">
        <button type="button" class="btn btn-ghost lockSiteBtn" style="margin-left:8px;">
-    Lock Location
+    Enter
   </button>
         <span class="siteNumberDisplay" style="margin-left:10px;font-weight:600;color:#2563eb;"></span>
         <span class="siteLockMsg" style="margin-left:10px;font-size:.85rem;color:#ef4444;"></span>
        </div>
-        <img src="commonpressureinjury.jfif"
-         alt="Body Image"
-         style="width:50%; max-width:480px; height:auto; border-radius:8px;">
-         <img src="commonbuttocksleison.png"
-         alt="Body Image"
-         style="width:50%; max-width:480px; height:auto; border-radius:8px;">
-              <img src="iadvspi.png"
-         alt="Body Image"
-         style="width:100%; max-width:900px; height:auto; border-radius:8px;">
+       
+         <div class="img-row">
+    <img src="commonpressureinjury.jfif" alt="Body Image" class="img-small">
+    <img src="commonbuttocksleison.png" alt="Buttocks Image" class="img-small">
+  </div>
+  
+  <div class="img-row">
+    <img src="iadvspi.png" alt="IAD vs PI" class="img-wide">
+  </div>
           <div class="options">
-            <div class="option"><input type="radio" name="q1b" value="Superficial" id="q1b-1"><label for="q1b-1">Superficial / diffuse / irregular borders / macerated =Incontinence Associated Damage</label></div>
-            <div class="option"><input type="radio" name="q1b" value="Focal" id="q1b-2"><label for="q1b-2">Focal / well-defined / full-thickness / circular / deep= Pressure injury</label></div>
+            <div class="option"><input type="radio" name="q1b" value="Superficial" id="q1b-1"><label for="q1b-1">Diffuse skin inflammation. Skin appears red, macerated, and may have irregular, superficial breakdown.</label></div>
+            <div class="option"><input type="radio" name="q1b" value="Focal" id="q1b-2"><label for="q1b-2">A focal, well-defined, deep, partial or full-thickness lesion caused by pressure or shear. Typically circular and located over a bony prominence.</label></div>
           </div>
         </div>
 
         <div class="question" id="question2" style="display:none;">
-          <h3>2. Is the wound/ skin abnormality on bony prominence area (i.e. palpate to assess if the wound is on the bone) AND PRESSURE/ SHEAR FORCE is present?</h3>
-          <h3>“In incontinent, immobile patients, pressure injuries and IAD may co-exist, even if wounds are close together. Assess and document each wound SEPARATELY, noting location carefully.”</h3>
+          <h3>2.Palpate the wound and assess for pressure or shear.
+                Shear example: sliding down in bed/chair.</h3>
+          <p class="clinical-remark">
+  In incontinent and immobile patients, pressure injuries and IAD may co-exist—even when wounds are close together. Assess and document each wound separately, carefully noting the anatomical location.
+</p>
               <div style="margin-top:12px;">
         <label style="font-weight:600;">Anatomical Location Number:</label>
         <input 
@@ -258,20 +310,20 @@
        style="width:140px;padding:8px;border-radius:8px;border:1px solid #e2e8f0;margin-left:8px;"
        >
        <button type="button" class="btn btn-ghost lockSiteBtn" style="margin-left:8px;">
-    Lock Location
+    Enter
   </button>
         <span class="siteNumberDisplay" style="margin-left:10px;font-weight:600;color:#2563eb;"></span>
         <span class="siteLockMsg" style="margin-left:10px;font-size:.85rem;color:#ef4444;"></span>
        </div>
-        <img src="commonpressureinjury.jfif"
-         alt="Body Image"
-         style="width:50%; max-width:480px; height:auto; border-radius:8px;">
-         <img src="commonbuttocksleison.png"
-         alt="Body Image"
-         style="width:50%; max-width:480px; height:auto; border-radius:8px;">
+        <div class="img-row">
+  <img src="commonpressureinjury.jfif" alt="Body Image" class="img-small">
+  <img src="commonbuttocksleison.png" alt="Body Image" class="img-small">
+</div>
           <div class="options">
-       <div class="option"><input type="radio" name="q2" value="yes" id="q2-1"><label for="q2-1">Yes</label></div>
-       <div class="option"><input type="radio" name="q2" value="no" id="q2-2"><label for="q2-2">No</label></div>
+       <div class="option"><input type="radio" name="q2" value="both" id="q2-1"><label for="q2-1">Yes. BOTH bony area And Pressure/Shear force are identified.</label></div>
+       <div class="option"><input type="radio" name="q2" value="neither" id="q2-2"><label for="q2-2">No. Neither on bony area Nor Pressure/Shear force are identified.</label></div>
+       <div class="option"><input type="radio" name="q2" value="bony" id="q2-3"><label for="q2-3">ONLY BONY. No Pressure/Shear force are identified.</label></div>
+       <div class="option"><input type="radio" name="q2" value="bony" id="q2-4"><label for="q2-4">ONLY PRESSURE/SHEAR FORCE is identified. Not on bony area.</label></div>
 </div>
        </div>
 
@@ -288,7 +340,10 @@
           <div class="options">
             <div class="option"><input type="radio" name="q4" value="yes" id="q4-1"><label for="q4-1">Yes.</label></div>
             <div class="option"><input type="radio" name="q4" value="no" id="q4-2"><label for="q4-2">No.</label></div>
-          </div>
+          <div class="img-row">
+          <img src="musclebonetendon.png" alt="musclebonetendon Image" class="img-small">
+        </div>
+        </div>
         </div>
 
         <div class="question" id="question5" style="display:none;">
@@ -297,14 +352,30 @@
             <div class="option"><input type="radio" name="q5" value="yes" id="q5-1"><label for="q5-1">Yes</label></div>
             <div class="option"><input type="radio" name="q5" value="no" id="q5-2"><label for="q5-2">No</label></div>
           </div>
+          
+          <div class="img-row">
+          <img src="sloughvsfat.png" alt="sloughvsfat.png Image" class="img-small">
+        </div>
         </div>
 
         <div class="question" id="question5a" style="display:none;">
           <h3>5a. Do you see any eschar/slough?</h3>
           <div class="options">
-            <div class="option"><input type="radio" name="q5a" value="yes" id="q5a-1"><label for="q5a-1">Yes. A wound with the wound bed obscured by slough or eschar. </label></div>
-            <div class="option"><input type="radio" name="q5a" value="no" id="q5a-2"><label for="q5a-2">No. No slough or eschar. Wound is open shallow and no fat/ tendon and bone are observed. Only dermis is seen.</label></div>
+            <div class="option"><input type="radio" name="q5a" value="yes" id="q5a-1"><label for="q5a-1">Yes</label></div>
+            <div class="option"><input type="radio" name="q5a" value="no" id="q5a-2"><label for="q5a-2">No</label></div>
+          <div class="img-row">
+          <img src="sloughandeschar.png" alt="sloughandeschar.png Image" class="img-small">
+        </div>
+        </div>
+        </div>
+        
+        <div class="question" id="question5b" style="display:none;">
+          <h3>5b. Does the slough/eschar covers enough of a wound to prevent identifying the full depth of tissue damage?</h3>
+          <div class="options">
+            <div class="option"><input type="radio" name="q5b" value="yes" id="q5b-1"><label for="q5b-1">Yes</label></div>
+            <div class="option"><input type="radio" name="q5b" value="no" id="q5b-2"><label for="q5b-2">No</label></div>
           </div>
+          <img src="sloughandeschar.png" alt="sloughandeschar.png Image" class="img-small">
         </div>
 
         <div class="question" id="question6" style="display:none;">
@@ -313,6 +384,9 @@
             <div class="option"><input type="radio" name="q6" value="yes" id="q6-1"><label for="q6-1">Yes</label></div>
             <div class="option"><input type="radio" name="q6" value="no" id="q6-2"><label for="q6-2">No</label></div>
           </div>
+          <div class="img-row">
+          <img src="allblisters.png" alt="allblisters.png Image" class="img-small">
+        </div>
         </div>
 
         <div class="question" id="question7" style="display:none;">
@@ -321,6 +395,9 @@
             <div class="option"><input type="radio" name="q7" value="Serum filled i.e. Clear filled" id="q7-1"><label for="q7-1">Serum filled i.e. Clear filled</label></div>
             <div class="option"><input type="radio" name="q7" value="Blood filled i.e. maroon filled. Or the presence of mushy/ boggy skin in darker skin tone" id="q7-2"><label for="q7-2">Blood filled i.e. maroon filled. Or the presence of mushy/ boggy skin in darker skin tone</label></div>
           </div>
+          <div class="img-row">
+          <img src="blisterswithlabel.png" alt="blisterswithlabel.png Image" class="img-small">
+        </div>
         </div>
         
         <div class="question" id="question8" style="display:none;">
@@ -329,20 +406,28 @@
             <div class="option"><input type="radio" name="q8" value="yes" id="q8-1"><label for="q8-1">Yes</label></div>
             <div class="option"><input type="radio" name="q8" value="no" id="q8-2"><label for="q8-2">No</label></div>
           </div>
+          <div class="img-row">
+          <img src="blanchable.png" alt="blanchable.png Image" class="img-small">
+        </div>
         </div>
 
         <div class="question" id="question9" style="display:none;">
-          <h3>9. If the skin does not turn white, what color is the skin?</h3>
+          <h3>9. If the skin does not turn white when you apply presure, what color is the skin?</h3>
           <div class="options">
             <div class="option"><input type="radio" name="q9" value="maroon/ light purple" id="q9-1"><label for="q9-1">maroon/ light purple</label></div>
             <div class="option"><input type="radio" name="q9" value="red" id="q9-2"><label for="q9-2">red</label></div>
             <div class="option"><input type="radio" name="q9" value="In dark skin tone, its color may simply differ from the surrounding area e.g. tan/gray" id="q9-3"><label for="q9-3">In dark skin tone, its color may simply differ from the surrounding area e.g. tan/gray</label></div>
           </div>
+          <div class="img-row">
+          <img src="darklight.png" alt="darklight.png Image" class="img-small">
+        </div>
         </div>
 
         <div class="question" id="question10" style="display:none;">
           <h3>10.Is the wound related to moisture?</h3>
-          <h3>“In incontinent, immobile patients, pressure injuries and IAD may co-exist, even if wounds are close together. Assess and document each wound SEPARATELY, noting location carefully.”</h3>
+          <p class="clinical-remark">
+  In incontinent and immobile patients, pressure injuries and IAD may co-exist—even when wounds are close together. Assess and document each wound separately, carefully noting the anatomical location.
+</p>
               <div style="margin-top:12px;">
         <label style="font-weight:600;">Anatomical Location Number:</label>
         <input 
@@ -354,17 +439,15 @@
        style="width:140px;padding:8px;border-radius:8px;border:1px solid #e2e8f0;margin-left:8px;"
        >
        <button type="button" class="btn btn-ghost lockSiteBtn" style="margin-left:8px;">
-    Lock Location
+    Enter
   </button>
         <span class="siteNumberDisplay" style="margin-left:10px;font-weight:600;color:#2563eb;"></span>
         <span class="siteLockMsg" style="margin-left:10px;font-size:.85rem;color:#ef4444;"></span>
        </div>
-        <img src="commonpressureinjury.jfif"
-         alt="Body Image"
-         style="width:50%; max-width:480px; height:auto; border-radius:8px;">
-         <img src="commonbuttocksleison.png"
-         alt="Body Image"
-         style="width:50%; max-width:480px; height:auto; border-radius:8px;">
+        <div class="img-row">
+  <img src="commonpressureinjury.jfif" alt="Body Image" class="img-small">
+  <img src="commonbuttocksleison.png" alt="Body Image" class="img-small">
+</div>
           <div class="options">
             <div class="option"><input type="radio" name="q10" value="yes" id="q10-1"><label for="q10-1">Yes</label></div>
             <div class="option"><input type="radio" name="q10" value="no" id="q10-2"><label for="q10-2">No</label></div>
@@ -373,7 +456,9 @@
 
         <div class="question" id="question11" style="display:none;">
           <h3>11. Is the wound located at the perineal/perigenital area?</h3>
-          <h3>“In incontinent, immobile patients, pressure injuries and IAD may co-exist, even if wounds are close together. Assess and document each wound SEPARATELY, noting location carefully.”</h3>
+          <p class="clinical-remark">
+  In incontinent and immobile patients, pressure injuries and IAD may co-exist—even when wounds are close together. Assess and document each wound separately, carefully noting the anatomical location.
+</p>
               <div style="margin-top:12px;">
         <label style="font-weight:600;">Anatomical Location Number:</label>
         <input 
@@ -385,16 +470,14 @@
        style="width:140px;padding:8px;border-radius:8px;border:1px solid #e2e8f0;margin-left:8px;"
        >
        <button type="button" class="btn btn-ghost lockSiteBtn" style="margin-left:8px;">
-    Lock Location
+    Enter
   </button>
         <span class="siteNumberDisplay" style="margin-left:10px;font-weight:600;color:#2563eb;"></span>
        </div>
-        <img src="commonpressureinjury.jfif"
-         alt="Body Image"
-         style="width:50%; max-width:480px; height:auto; border-radius:8px;">
-         <img src="commonbuttocksleison.png"
-         alt="Body Image"
-         style="width:50%; max-width:480px; height:auto; border-radius:8px;">
+        <div class="img-row">
+  <img src="commonpressureinjury.jfif" alt="Body Image" class="img-small">
+  <img src="commonbuttocksleison.png" alt="Body Image" class="img-small">
+</div>
           <div class="options">
             <div class="option"><input type="radio" name="q11" value="yes" id="q11-1"><label for="q11-1">Yes</label></div>
             <div class="option"><input type="radio" name="q11" value="no" id="q11-2"><label for="q11-2">No</label></div>
@@ -402,7 +485,7 @@
         </div>
 
         <div class="question" id="question12" style="display:none;">
-          <h3>12. Is the wound caused by shear-force?</h3>
+          <h3>12. Is the wound caused by shear force? Shear example: sliding down in bed/chair.</h3>
           <div class="options">
             <div class="option"><input type="radio" name="q12" value="yes" id="q12-1"><label for="q12-1">Yes</label></div>
             <div class="option"><input type="radio" name="q12" value="no" id="q12-2"><label for="q12-2">No</label></div>
@@ -423,6 +506,9 @@
             <div class="option"><input type="radio" name="q14" value="yes" id="q14-1"><label for="q14-1">Yes</label></div>
             <div class="option"><input type="radio" name="q14" value="no" id="q14-2"><label for="q14-2">No</label></div>
           </div>
+          <div class="img-row">
+    <img src="iadvspi.png" alt="IAD vs PI" class="img-wide">
+  </div>
         </div>
 
         <!-- Results + Interventions -->
@@ -436,12 +522,10 @@
     flex-wrap:wrap;
     margin-top:8px;
   ">
-    <img src="commonpressureinjury.jfif"
-         alt="Body Image"
-         style="width:48%; max-width:480px; height:auto; border-radius:8px;">
-    <img src="commonbuttocksleison.png"
-         alt="Body Image"
-         style="width:48%; max-width:480px; height:auto; border-radius:8px;">
+    <div class="img-row">
+  <img src="commonpressureinjury.jfif" alt="Body Image" class="img-small">
+  <img src="commonbuttocksleison.png" alt="Body Image" class="img-small">
+</div>
   </div>
 
   <!-- Result panel -->
@@ -507,7 +591,7 @@
   17:"Sacrum/Coccyx",
   18:"Buttocks",
   19:"Medial knee",
-  20:"Medial malleolus",
+  20:"Medial malleolus (Ankle)",
   21:"Heel",
   // Buttocks Lesion Image
   22:"Sacrum",
@@ -929,13 +1013,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
       
       // Q2
       if(nm==='q2'){
-        if(val==='yes') return showQuestion('question3');
-        if(val==='no') return showQuestion('question10');
+        if(val==='both') return showQuestion('question3');
+        if(val==='neither') return showQuestion('question10');
+        if(val==='bony') return showQuestion('question10');
+        if(val==='shear') return showQuestion('question3');
       }
 
       // Q3
       if(nm==='q3'){
-        if(val==='yes') return showQuestion('question4');
+        if(val==='yes') return showQuestion('question5a');
         if(val==='no') return showQuestion('question6');
       }
 
@@ -948,13 +1034,19 @@ document.addEventListener('DOMContentLoaded', ()=>{
       // Q5
       if(nm==='q5'){
         if(val==='yes') return showResult('It is Stage 3 PI.');
-        if(val==='no') return showQuestion('question5a');
+        if(val==='no') return showResult('It is Stage 2 PI');
       }
 
       // Q5a
       if(nm==='q5a'){
-        if(val==='yes') return showResult('It is Unstageable.');
-        if(val==='no') return showResult('It is Stage 2.');
+        if(val==='yes') return showQuestion('question5b');
+        if(val==='no') return showQuestion('question4');
+      }
+      
+      // Q5b
+      if(nm==='q5b'){
+        if(val==='yes') return showResult('It is unstageable');
+        if(val==='no') return showQuestion('question4');
       }
 
       // Q6
