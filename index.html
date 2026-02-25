@@ -1,3 +1,16 @@
+<!--
+  Pressure Injury Staging Clinical Decision Support System (PIS-CDSS)
+  © 2026 Astrid Robeson. All Rights Reserved.
+
+  This software and its design, logic, structure, and clinical workflow
+  are proprietary intellectual property.
+
+  Unauthorized reproduction, distribution, or modification is prohibited
+  without written permission from the owner.
+
+  Version 1.0
+  Last Updated: February 2026
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,7 +131,7 @@
       height:auto!important;
     }
     .img-small{
-    width:49% !important;
+    width:60% !important;
     max-width:220px !important;
     height:auto !important;
   }
@@ -249,19 +262,19 @@
         <div class="question" id="question1a" style="display:none;">
           <h3>1a. Investigate the wound's etiology.<br>Ask the patient or family and check the patient's chart, how did the patient obtain THE wound?</h3>
           <div class="options">
-            <div class="option"><input type="radio" name="q1a" value="pressure" id="q1a-1"><label for="q1a-1">Pressure/ Shear force related-Immobolization/ caused by sliding down in bed/ chair</label></div>
+            <div class="option"><input type="radio" name="q1a" value="pressure" id="q1a-1"><label for="q1a-1">Pressure/ Shear force related-Immobilization/ caused by sliding down in bed/ chair</label></div>
             <div class="option"><input type="radio" name="q1a" value="nonpressure" id="q1a-2"><label for="q1a-2">Non-pressure or shear force related- e.g. surgical wounds, mechanical fall, PAD, PVD, DM ulcer, cellulitis, laceration etc.</label></div>
             <div class="option"><input type="radio" name="q1a" value="moisture" id="q1a-3"><label for="q1a-3">Moisture related- e.g. incontinence/diarrhea/skin folds/stoma leaking/ wound draining etc</label></div>
-            <div class="option"><input type="radio" name="q1a" value="pressureandmoisture" id="q1a-4"><label for="q1a-4"> BOTH- Immobolization/ shear force AND Moisture-related</label></div>
+            <div class="option"><input type="radio" name="q1a" value="pressureandmoisture" id="q1a-4"><label for="q1a-4"> BOTH- Immobilization/ shear force AND Moisture-related</label></div>
             <div class="option"><input type="radio" name="q1a" value="medicaldevice" id="q1a-5"><label for="q1a-5">Medical device- related including medical device e.g. SCD, nasal cannula or Bipap etc.</label></div>
            <div class="option"><input type="radio" name="q1a" value="unknown" id="q1a-6"><label for="q1a-6">No idea how the wound created or No idea there is a wound</label></div>
           </div>
         </div>
         
         <div class="question" id="question1b" style="display:none;">
-        <h3>1b. BOTH incontinent and immmobile patients,  pressure injuries and IAD may co-exist—even when wounds are close together. What does the wound look like?</h3>
+        <h3>1b. BOTH incontinent and immobile patients,  pressure injuries and IAD may co-exist—even when wounds are close together. What does the wound look like?</h3>
         <p class="clinical-remark">
-  Assess and document each wound separately if necessarily and carefully noting the anatomical location.
+  Assess and document each wound separately if necessary and carefully noting the anatomical location.
 </p>
               <div style="margin-top:12px;">
         <label style="font-weight:600;">Anatomical Location Number:</label>
@@ -275,6 +288,9 @@
        <button type="button" class="btn btn-ghost lockSiteBtn" style="margin-left:8px;">
     Enter
   </button>
+  <button type="button" class="btn btn-ghost unlockSiteBtn" style="margin-left:8px; display:none;">
+  Erase
+</button>
         <span class="siteNumberDisplay" style="margin-left:10px;font-weight:600;color:#2563eb;"></span>
         <span class="siteLockMsg" style="margin-left:10px;font-size:.85rem;color:#ef4444;"></span>
        </div>
@@ -294,11 +310,13 @@
         </div>
 
         <div class="question" id="question2" style="display:none;">
-          <h3>2.Palpate the wound and identify for any pressure or shear force.
-                Shear example: sliding down in bed/chair.</h3>
+          <h3>2. Location alone does not determine pressure injury. </br> Etiology (pressure, shear, or device-related compression) is the key factor. </br> Is this area usually pressed against the bed, chair, or a medical device — or has it been sliding/rubbing (shear)?</h3>
           <p class="clinical-remark">
-  In incontinent and immobile patients, pressure injuries and IAD may co-exist—even when wounds are close together. Assess and document each wound separately, carefully noting the anatomical location.
+In incontinent and immobile patients, pressure injuries and IAD may co-exist—even when wounds are close together. Assess and document each wound separately, carefully noting the anatomical location.
 </p>
+ <p class="clinical-remark">
+    Common shear risk sites: sacrum/coccyx, ischial tuberosities, heels, posterior thighs, elbows — especially if sliding down in bed/chair or being boosted without lift.
+  </p>
               <div style="margin-top:12px;">
         <label style="font-weight:600;">Anatomical Location Number:</label>
         <input 
@@ -312,6 +330,9 @@
        <button type="button" class="btn btn-ghost lockSiteBtn" style="margin-left:8px;">
     Enter
   </button>
+  <button type="button" class="btn btn-ghost unlockSiteBtn" style="margin-left:8px; display:none;">
+  Erase
+</button>
         <span class="siteNumberDisplay" style="margin-left:10px;font-weight:600;color:#2563eb;"></span>
         <span class="siteLockMsg" style="margin-left:10px;font-size:.85rem;color:#ef4444;"></span>
        </div>
@@ -320,13 +341,29 @@
   <img src="commonbuttocksleison.png" alt="Body Image" class="img-small">
 </div>
           <div class="options">
-       <div class="option"><input type="radio" name="q2" value="both" id="q2-1"><label for="q2-1">Yes. BOTH bony area And Pressure/Shear force are identified.</label></div>
-       <div class="option"><input type="radio" name="q2" value="neither" id="q2-2"><label for="q2-2">No. Neither on bony area Nor Pressure/Shear force are identified.</label></div>
-       <div class="option"><input type="radio" name="q2" value="bony" id="q2-3"><label for="q2-3">ONLY BONY AREA is identified. No Pressure/Shear force.</label></div>
-       <div class="option"><input type="radio" name="q2" value="shear" id="q2-4"><label for="q2-4">ONLY PRESSURE/SHEAR FORCE is identified. Not on bony area.</label></div>
+       <div class="option"><input type="radio" name="q2" value="yes" id="q2-1"><label for="q2-1">Yes — pressure/shear/device pressure is present</label></div>
+       <div class="option"><input type="radio" name="q2" value="no" id="q2-2"><label for="q2-2">No — no pressure/shear/device pressure identified.</label></div>
+       <div class="option"><input type="radio" name="q2" value="possibly" id="q2-3"><label for="q2-3">Possibly — pressure/shear/device pressure cannot be ruled out</label></div>
 </div>
        </div>
 
+        <div class="question" id="question2a" style="display:none;">
+  <h3>2a. If pressure/shear/device pressure is not identified, is another cause more likely?</h3>
+  <p class="clinical-remark">
+    Examples: trauma/fall, surgical wound, vascular ulcer (PAD/PVD), diabetic ulcer, infection/cellulitis, dermatitis/rash.
+  </p>
+  <div class="options">
+    <div class="option">
+      <input type="radio" name="q2a" value="yes" id="q2a-1">
+      <label for="q2a-1">Yes — another cause is more likely</label>
+    </div>
+    <div class="option">
+      <input type="radio" name="q2a" value="no_or_unsure" id="q2a-2">
+      <label for="q2a-2">No / Unsure</label>
+    </div>
+  </div>
+</div>
+        
         <div class="question" id="question3" style="display:none;">
           <h3>3. Is it an open wound?</h3>
           <div class="options">
@@ -347,7 +384,7 @@
         </div>
 
         <div class="question" id="question5" style="display:none;">
-          <h3>5. Do you see subcutaneous fat?</h3>
+          <h3>5.Do you see subcutaneous fat (yellow/tan lobulated adipose)?</h3>
           <div class="options">
             <div class="option"><input type="radio" name="q5" value="yes" id="q5-1"><label for="q5-1">Yes</label></div>
             <div class="option"><input type="radio" name="q5" value="no" id="q5-2"><label for="q5-2">No</label></div>
@@ -359,7 +396,7 @@
         </div>
 
         <div class="question" id="question5a" style="display:none;">
-          <h3>5a. Do you see any eschar/slough?</h3>
+          <h3>5a. Is slough or eschar present anywhere in the wound bed?</h3>
           <div class="options">
             <div class="option"><input type="radio" name="q5a" value="yes" id="q5a-1"><label for="q5a-1">Yes</label></div>
             <div class="option"><input type="radio" name="q5a" value="no" id="q5a-2"><label for="q5a-2">No</label></div>
@@ -370,12 +407,12 @@
         </div>
         
         <div class="question" id="question5b" style="display:none;">
-          <h3>5b. Does the slough/eschar covers enough of a wound to prevent identifying the full depth of tissue damage?</h3>
+          <h3>5b. Is the wound depth obscured by slough or eschar?
+(If you cannot clearly see the deepest tissue layer, select Yes.)</h3>
           <div class="options">
             <div class="option"><input type="radio" name="q5b" value="yes" id="q5b-1"><label for="q5b-1">Yes</label></div>
             <div class="option"><input type="radio" name="q5b" value="no" id="q5b-2"><label for="q5b-2">No</label></div>
           </div>
-          <img src="sloughandeschar.png" alt="sloughandeschar.png Image" class="img-small">
         </div>
 
         <div class="question" id="question6" style="display:none;">
@@ -412,7 +449,7 @@
         </div>
 
         <div class="question" id="question9" style="display:none;">
-          <h3>9. If the skin does not turn white when you apply presure, what color is the skin?</h3>
+          <h3>9. If the skin does not turn white when you apply pressure, what color is the skin?</h3>
           <div class="options">
             <div class="option"><input type="radio" name="q9" value="maroon/ light purple" id="q9-1"><label for="q9-1">maroon/ light purple</label></div>
             <div class="option"><input type="radio" name="q9" value="red" id="q9-2"><label for="q9-2">red</label></div>
@@ -441,6 +478,9 @@
        <button type="button" class="btn btn-ghost lockSiteBtn" style="margin-left:8px;">
     Enter
   </button>
+  <button type="button" class="btn btn-ghost unlockSiteBtn" style="margin-left:8px; display:none;">
+  Erase
+</button>
         <span class="siteNumberDisplay" style="margin-left:10px;font-weight:600;color:#2563eb;"></span>
         <span class="siteLockMsg" style="margin-left:10px;font-size:.85rem;color:#ef4444;"></span>
        </div>
@@ -455,7 +495,7 @@
         </div>
 
         <div class="question" id="question11" style="display:none;">
-          <h3>11. Is the wound located at the perineal/perigenital area?</h3>
+          <h3>11. Is the wound located at the perigenital/perineal area?</h3>
           <p class="clinical-remark">
   In incontinent and immobile patients, pressure injuries and IAD may co-exist—even when wounds are close together. Assess and document each wound separately, carefully noting the anatomical location.
 </p>
@@ -472,6 +512,9 @@
        <button type="button" class="btn btn-ghost lockSiteBtn" style="margin-left:8px;">
     Enter
   </button>
+  <button type="button" class="btn btn-ghost unlockSiteBtn" style="margin-left:8px; display:none;">
+  Erase
+</button>
         <span class="siteNumberDisplay" style="margin-left:10px;font-weight:600;color:#2563eb;"></span>
        </div>
         <div class="img-row">
@@ -487,8 +530,9 @@
         <div class="question" id="question12" style="display:none;">
           <h3>12. Is the wound caused by shear force? Shear example: sliding down in bed/chair.</h3>
           <div class="options">
-            <div class="option"><input type="radio" name="q12" value="yes" id="q12-1"><label for="q12-1">Yes</label></div>
-            <div class="option"><input type="radio" name="q12" value="no" id="q12-2"><label for="q12-2">No</label></div>
+            <div class="option"><input type="radio" name="q12" value="yes" id="q12-1"><label for="q12-1">Yes (shear likely)</label></div>
+            <div class="option"><input type="radio" name="q12" value="no" id="q12-2"><label for="q12-2">No (shear unlikely)</label></div>
+            <div class="option"><input type="radio" name="q12" value="unsure" id="q12-3"><label for="q12-3">Unsure / cannot rule out</label></div>
           </div>
         </div>
           
@@ -510,6 +554,10 @@
     <img src="iadvspi.png" alt="IAD vs PI" class="img-wide">
   </div>
         </div>
+
+<div class="question-navigation" id="backNav" style="display:none;">
+  <button type="button" class="btn btn-prev" onclick="goBack()">Back</button>
+</div>
 
         <!-- Results + Interventions -->
         <div id="result" style="display:none;">
@@ -572,37 +620,38 @@
 <script>
   let selectedSite = "";
   const SITE_MAP = {
-  1:"Forehead-bony area",
-  2:"Cheeks-bony area",
-  3:"Ears-bony area",
-  4:"Nose-bony area",
-  5:"Lips/Chin-bony area",
-  6:"Occiput-bony area",
-  7:"Thoracic area (ribs)-bony area",
-  8:"Anterior iliac crest-bony area",
-  9:"Trochanter (hip)-bony area",
-  10:"Lateral knee & patella-bony area",
-  11:"Lateral malleolus-bony area",
-  12:"Toes-bony area",
-  13:"Shoulder-bony area",
-  14:"Scapula-bony area",
-  15:"Spinal column-bony area",
-  16:"Elbow-bony area",
-  17:"Sacrum/Coccyx-bony area",
-  18:"Buttocks",
-  19:"Medial knee-bony area",
-  20:"Ankle-bony area",
-  21:"Heel-bony area",
-  // Buttocks Lesion Image
-  22:"Sacrum-bony area",
-  23:"Coccyx-bony area",
-  24:"Intergluteal cleft",
-  25:"Perianal area",
-  26:"Sacral iliac crest-bony area",
-  27:"Buttocks",
-  28:"Ischial tuberosity-bony area",
-  29:"Posterior thigh",
-  30:"Trochanter-bony area"
+  1:  "Forehead (device risk)",
+  2:  "Cheek (device risk)",
+  3:  "Ear (device risk)",
+  4:  "Nose bridge (device risk)",
+  5:  "Chin/Lips (device risk)",
+  6:  "Occiput (pressure risk)",
+  7:  "Rib area (pressure risk)",
+  8:  "Iliac crest (pressure risk)",
+  9:  "Hip/Trochanter (pressure risk)",
+  10: "Lateral knee (pressure risk)",
+  11: "Outer ankle (pressure risk)",
+  12: "Toes (Please confirm any pressure/device)",
+  13: "Shoulder (pressure risk)",
+  14: "Scapula (pressure risk)",
+  15: "Spine (pressure risk)",
+  16: "Elbow (pressure/shear risk)",
+  17: "Sacrum/Coccyx (pressure/shear risk)",
+  18: "Buttocks (assess pattern)",
+
+  19: "Inner knee (pressure risk)",
+  20: "Ankle (confirm location)",
+  21: "Heel (pressure/shear risk)",
+
+  22: "Sacrum (pressure/shear risk)",
+  23: "Coccyx (pressure/shear risk)",
+  24: "Intergluteal cleft (moisture vs pressure)",
+  25: "Perianal area (moisture common)",
+  26: "Posterior iliac crest (pressure risk)",
+  27: "Buttocks (moisture vs pressure/shear)",
+  28: "Ischial tuberosity (pressure/shear risk)",
+  29: "Posterior thigh (shear risk)",
+  30: "Hip/Trochanter (pressure/shear risk)"
 };
 
 let lockedSiteNum = null;      // the ONE official site number
@@ -624,6 +673,9 @@ function updateAllSiteInputs() {
     
     const msg = inp.parentElement.querySelector('.siteLockMsg');
 if (msg) msg.textContent = (lockedSiteNum !== null) ? `Locked to ${lockedSiteLabel}.` : "";
+
+const unlockBtn = inp.parentElement.querySelector('.unlockSiteBtn');
+if (unlockBtn) unlockBtn.style.display = (lockedSiteNum !== null) ? 'inline-block' : 'none';
   });
 }
 
@@ -676,6 +728,27 @@ function updateSiteVisualState() {
       inp.classList.add('site-valid');
     }
   });
+}
+
+function goBack(){
+  if(questionHistory.length === 0) return;
+
+  const previousQuestion = questionHistory.pop();
+
+  document.querySelectorAll('.question').forEach(q=>{
+    q.classList.remove('active');
+    q.style.display='none';
+  });
+
+  const el = document.getElementById(previousQuestion);
+  if(el){
+    el.style.display='block';
+    el.classList.add('active');
+  }
+
+  currentIndex = questionsOrder.indexOf(previousQuestion);
+  updateProgress();
+  updateSteps();
 }
 
 /* ----------------------- DATA: interventions (unchanged) ----------------------- */
@@ -822,11 +895,14 @@ braden:{
 /* ----------------------- Helpers: progress + steps ----------------------- */
 const stepIndicators = document.querySelectorAll('.step');
 const questionsOrder = [
-  'question0','question1','question1a', 'question1b','question2','question3','question4',
-  'question5','question5a','question6','question7','question8','question9',
+  'question0','question1','question1a','question1b',
+  'question2','question2a','question3',
+  'question5a','question5b','question4','question5',
+  'question6','question7','question8','question9',
   'question10','question11','question12','question13','question14'
 ];
 let currentIndex = 0;
+let questionHistory = [];
 
 function updateProgress(){
   const pct = (currentIndex / questionsOrder.length) * 100;
@@ -836,16 +912,36 @@ function updateSteps(){
   stepIndicators.forEach((s,i)=> i <= currentIndex ? s.classList.add('active') : s.classList.remove('active'));
 }
 function showQuestion(id){
+  // Push current question into history
+  const currentQuestion = questionsOrder[currentIndex];
+  if(currentQuestion && currentQuestion !== id){
+    questionHistory.push(currentQuestion);
+  }
+
   // hide all questions + result
-  document.querySelectorAll('.question').forEach(q=>{q.classList.remove('active'); q.style.display='none';});
+  document.querySelectorAll('.question').forEach(q=>{
+    q.classList.remove('active');
+    q.style.display='none';
+  });
   document.getElementById('result').style.display='none';
-  // show the requested one
+
+  // show requested question
   const el = document.getElementById(id);
-  if(el){ el.style.display='block'; el.classList.add('active'); }
-  // sync index + UI
+  if(el){
+    el.style.display='block';
+    el.classList.add('active');
+  }
+
   const idx = questionsOrder.indexOf(id);
   if(idx >= 0) currentIndex = idx;
-  updateProgress(); updateSteps();
+
+  updateProgress();
+  updateSteps();
+  
+  const backNav = document.getElementById('backNav');
+if(backNav){
+  backNav.style.display = (id === 'question0') ? 'none' : 'flex';
+}
 }
 
 /* ---------- Map result text -> intervention key ---------- */
@@ -918,6 +1014,9 @@ function showResult(resultText){
   document.getElementById('initialValue').textContent = initialAssessment || 'Not specified';
   document.getElementById('finalValue').textContent = resultText;
   
+  const backNav = document.getElementById('backNav');
+if(backNav) backNav.style.display = 'none';
+  
  const siteResult = document.getElementById('siteResult');
 if (siteResult) {
   siteResult.textContent = lockedSiteLabel
@@ -944,46 +1043,69 @@ if (siteResult) {
 }
 /* ----------------------- Branching: EXACTLY like index.html ----------------------- */
 document.addEventListener('DOMContentLoaded', ()=>{
-  // 🔐 Lock anatomical location inputs
+
   bindLockedSiteInputs();
   updateAllSiteInputs();
   updateSiteVisualState();
-  
+
+  // 🔒 LOCK
   document.querySelectorAll('.lockSiteBtn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const container = btn.parentElement;
-    const inp = container.querySelector('.siteNumberInput');
-    const msg = container.querySelector('.siteLockMsg');
-    const display = container.querySelector('.siteNumberDisplay');
+    btn.addEventListener('click', () => {
+      const container = btn.parentElement;
+      const inp = container.querySelector('.siteNumberInput');
+      const msg = container.querySelector('.siteLockMsg');
+      const display = container.querySelector('.siteNumberDisplay');
 
-    const num = parseInt(inp.value, 10);
+      const num = parseInt(inp.value, 10);
 
-    // validate first
-    if (!SITE_MAP[num]) {
-      if (display) display.textContent = "";
-      if (msg) msg.textContent = "Enter a valid number (1–30) first.";
-      return;
-    }
+      if (!SITE_MAP[num]) {
+        if (display) display.textContent = "";
+        if (msg) msg.textContent = "Enter a valid number (1–30) first.";
+        return;
+      }
 
-    // lock globally
-    lockedSiteNum = num;
-    lockedSiteLabel = `${SITE_MAP[num]} (${num})`;
-    selectedSite = lockedSiteLabel;
+      lockedSiteNum = num;
+      lockedSiteLabel = `${SITE_MAP[num]} (${num})`;
+      selectedSite = lockedSiteLabel;
 
-    // clear message + show locked value
-    if (msg) msg.textContent = `Locked to ${lockedSiteLabel}.`;
+      if (msg) msg.textContent = `Locked to ${lockedSiteLabel}.`;
 
-    updateAllSiteInputs();
+      updateAllSiteInputs();
+      updateSiteVisualState();
+    });
   });
-});
+
+  // 🔓 UNLOCK  ← PUT IT HERE
+  document.querySelectorAll('.unlockSiteBtn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      lockedSiteNum = null;
+      lockedSiteLabel = "";
+      selectedSite = "";
+
+      document.querySelectorAll('.siteNumberInput').forEach(inp => inp.value = "");
+      document.querySelectorAll('.siteNumberDisplay').forEach(d => d.textContent = "");
+      document.querySelectorAll('.siteLockMsg').forEach(m => m.textContent = "");
+
+      updateAllSiteInputs();
+      updateSiteVisualState();
+    });
+  });
   
   // init
   updateProgress(); updateSteps();
+  
+  // ✅ FORCE initial screen + hides back button correctly
+  showQuestion('question0');
+  
+  // ✅ radio listeners (click + change)
+  document.querySelectorAll('input[type="radio"]').forEach(r => {
+  r.addEventListener('change', function(){ handleAnswer(this); });
+  r.addEventListener('click', function(){ handleAnswer(this); });
+});
 
-  // Radio logic: mirror index.html flow
-  document.querySelectorAll('input[type="radio"]').forEach(r=>{
-    r.addEventListener('change', function(){
-      const nm = this.name, val = this.value;
+function handleAnswer(el){
+  const nm = el.name;
+  const val = el.value;
 
       // Q0 -> capture + go to Q1
       if(nm==='q0'){ initialAssessment = val; showQuestion('question1'); return; }
@@ -998,10 +1120,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
        // Q1a
       if(nm==='q1a'){
         if(val==='pressure') return showQuestion('question2');
-        if(val==='nonpressure') return showQuestion('question12'); // keep flow identical
+        if(val==='nonpressure') return showQuestion('question13'); // keep flow identical
         if(val==='moisture') return showQuestion('question11');
         if(val==='pressureandmoisture') return showQuestion('question1b');
-        if(val==='medicaldevice') return showQuestion('question3');
+        if(val==='medicaldevice') return showQuestion('question2');
         if(val==='unknown') return showQuestion('question2');
       }
 
@@ -1013,11 +1135,16 @@ document.addEventListener('DOMContentLoaded', ()=>{
       
       // Q2
       if(nm==='q2'){
-        if(val==='both') return showQuestion('question3');
-        if(val==='neither') return showQuestion('question10');
-        if(val==='bony') return showQuestion('question10');
-        if(val==='shear') return showQuestion('question3');
+        if(val==='yes') return showQuestion('question3');
+        if(val==='no') return showQuestion('question2a');
+        if(val==='possibly') return showQuestion('question3');
       }
+      
+      // Q2a
+if(nm === 'q2a'){
+  if(val === 'yes') return showQuestion('question13');
+  if(val === 'no_or_unsure') return showQuestion('question10');
+}
 
       // Q3
       if(nm==='q3'){
@@ -1034,7 +1161,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
       // Q5
       if(nm==='q5'){
         if(val==='yes') return showResult('It is Stage 3 PI.');
-        if(val==='no') return showResult('It is Stage 2 PI');
+        if(val==='no') return showResult('It is Stage 2 ONLY IF depth is not obscured by slough/eschar.');
       }
 
       // Q5a
@@ -1090,12 +1217,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
       if(nm==='q12'){
         if(val==='yes') return showQuestion('question3');
         if(val==='no') return showQuestion('question13');
+        if(val==='unsure') return showQuestion('question3');
       }
       
       // Q13
       if(nm==='q13'){
-        if(val==='yes') return showResult('It is not PI but a wound which relates to other causes maybe laceration, abrasion, open surgical wound, venous ulcer etc. Chart the wound charateristics.');
-        if(val==='no') return showResult('It is not PI but chart the skin issue charateristics.');
+        if(val==='yes') return showResult('It is not PI but a wound which relates to other causes maybe laceration, abrasion, open surgical wound, venous ulcer etc. Chart the wound characteristics.');
+        if(val==='no') return showResult('It is not PI but chart the skin issue characteristics.');
       }
       
       // Q14
@@ -1103,9 +1231,27 @@ document.addEventListener('DOMContentLoaded', ()=>{
         if(val==='yes') return showQuestion('question5');
         if(val==='no') return showResult('It is not PI but IAD (incontinence associated dermatitis).');
       }
-    });
-  });
+}
 });
 </script>
+<footer style="
+  margin-top:60px;
+  padding:20px 0;
+  text-align:center;
+  font-family:'Inter', sans-serif;
+  font-size:12px;
+  color:var(--gray);
+  border-top:1px solid #e2e8f0;
+">
+  <div style="font-weight:500;">
+    Pressure Injury Staging Clinical Decision Support System (PIS-CDSS)
+  </div>
+  <div>
+    © 2026 Astrid Robeson. All Rights Reserved.
+  </div>
+  <div style="margin-top:4px;">
+    Version 1.0 | Last Updated: February 2026
+  </div>
+</footer>
 </body>
 </html>
